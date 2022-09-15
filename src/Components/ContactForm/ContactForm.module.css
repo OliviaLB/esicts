@@ -1,0 +1,122 @@
+.form {
+  display: grid;
+  box-sizing: border-box;
+  width: 80%;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 1rem 5rem;
+  background: rgb(190, 189, 189);
+  padding: 5rem 5rem;
+  margin: 4rem 2rem;
+  border-radius: 10px;
+}
+
+.form-control {
+  flex: 0 50%;
+  margin-bottom: 1rem;
+  box-sizing: border-box;
+}
+
+.message {
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+.booking {
+  box-sizing: border-box;
+  padding: 0rem 3.5rem;
+  text-align: justify;
+  text-align-last: center;
+}
+
+textarea {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+
+  width: 100%;
+  height: 10vw;
+}
+
+.formbtn {
+  position: relative;
+  left: 60%;
+  border-width: 1px;
+  border-radius: 20px;
+  padding: 1.2rem;
+  display: inline-block;
+  font-size: 1.8rem;
+  letter-spacing: 0.3rem;
+  text-transform: uppercase;
+  background-color: #63b6e6;
+  color: #fff;
+  font-weight: bold;
+
+  -webkit-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+  border: 2px solid #63b6e6;
+  cursor: pointer;
+}
+
+.formbtn:hover {
+  background-color: #fff;
+  color: #63b6e6;
+  cursor: pointer;
+}
+
+button:disabled,
+button[disabled] {
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
+
+.form-control input,
+.form-control label {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.form-control label {
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.form-control input,
+.form-control select,
+textarea {
+  font: inherit;
+  padding: 1rem;
+  border-radius: 10px;
+  border: 3px solid #ccc;
+  transition: border 1s;
+}
+
+.form-control input:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--color-secondary);
+  background-color: var(--color-shade);
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.form-control input:invalid {
+  border: 3px solid #b40e0e;
+  background-color: #fddddd;
+}
+
+.errortext {
+  color: #b40e0e;
+  font-weight: 600;
+  padding-left: 10px;
+}
