@@ -1,58 +1,127 @@
 import classes from "./ContactForm.module.css";
-import { useState } from "react";
 import uuid from "react-uuid";
+import swal from "sweetalert";
+import useInput from "../../hooks/use-input";
+
+const isNotEmpty = (value: string) => value.trim() !== "";
+const isEmail = (value: string) => value.includes("@");
 
 const ContactForm = () => {
-  const [firstName, setfirstName] = useState("");
-  const [lastName, setlastName] = useState("");
-  const [mobile, setMobile] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
+  const {
+    value: firstNameValue,
+    isValid: firstNameIsValid,
+    hasError: firstNameHasError,
+    valueChangeHandler: firstNameChangeHandler,
+    inputBlurHandler: firstNameBlurHandler,
+    reset: resetFirstName,
+  } = useInput(isNotEmpty);
+
+  const {
+    value: lastNameValue,
+    isValid: lastNameIsValid,
+    hasError: lastNameHasError,
+    valueChangeHandler: lastNameChangeHandler,
+    inputBlurHandler: lastNameBlurHandler,
+    reset: resetLastName,
+  } = useInput(isNotEmpty);
+
+  const {
+    value: emailValue,
+    isValid: emailIsValid,
+    hasError: emailHasError,
+    valueChangeHandler: emailChangeHandler,
+    inputBlurHandler: emailBlurHandler,
+    reset: resetEmail,
+  } = useInput(isEmail);
+
+  const {
+    value: mobileValue,
+    isValid: mobileIsValid,
+    hasError: mobileHasError,
+    valueChangeHandler: mobileChangeHandler,
+    inputBlurHandler: mobileBlurHandler,
+    reset: resetMobile,
+  } = useInput(isNotEmpty);
+
+  const {
+    value: message,
+    isValid: messageIsValid,
+    hasError: messageHasError,
+    valueChangeHandler: messageChangeHandler,
+    inputBlurHandler: messageBlurHandler,
+    reset: resetMessage,
+  } = useInput(isNotEmpty);
+
+  let formIsValid = false;
+
+  if (
+    firstNameIsValid &&
+    lastNameIsValid &&
+    mobileIsValid &&
+    emailIsValid &&
+    messageIsValid
+  ) {
+    formIsValid = true;
+  }
+
+  // const [firstName, setfirstName] = useState("");
+
+  // const [lastName, setlastName] = useState("");
+
+  // const [mobile, setMobile] = useState("");
+
+  // const [email, setEmail] = useState("");
+
+  // const [message, setMessage] = useState("");
+
+  // const firstNameChangeHandler = (event: any) => {
+  //   setfirstName(event.target.value);
+  // };
+  // const lastNameChangeHandler = (event: any) => {
+  //   setlastName(event.target.value);
+  // };
+  // const mobileChangeHandler = (event: any) => {
+  //   setMobile(event.target.value);
+  // };
+  // const emailChangeHandler = (event: any) => {
+  //   setEmail(event.target.value);
+  // };
+  // const messageChangeHandler = (event: any) => {
+  //   setMessage(event.target.value);
+  // };
 
   const inquiry = {
     id: uuid(),
-    firstName,
-    lastName,
-    mobile,
-    email,
+    firstNameValue,
+    lastNameValue,
+    mobileValue,
+    emailValue,
     message,
-  };
-
-  const firstNameChangeHandler = (event: any) => {
-    setfirstName(event.target.value);
-  };
-  const lastNameChangeHandler = (event: any) => {
-    setlastName(event.target.value);
-  };
-  const mobileChangeHandler = (event: any) => {
-    setMobile(event.target.value);
-  };
-  const emailChangeHandler = (event: any) => {
-    setEmail(event.target.value);
-  };
-  const messageChangeHandler = (event: any) => {
-    setMessage(event.target.value);
   };
 
   function submitHandler(event: any) {
     event.preventDefault();
-    console.log("Submitted!");
-    console.log(firstName, lastName, mobile, email, message);
+
+    if (!formIsValid) {
+      swal("Error!", "Please ensure all fields are correct", "error");
+      return;
+    }
 
     fetch(
-      "https://esic-d92c3-default-rtdb.europe-west1.firebasedatabase.app/Inquiries.json",
+      "https://esic-d92c3-default-rtdb.europe-west1.firebasedatabase.app/inquiries.json",
       {
         method: "POST",
         body: JSON.stringify(inquiry),
       }
     );
-    alert("Thank you for your question!");
 
-    setfirstName("");
-    setlastName("");
-    setMobile("");
-    setEmail("");
-    setMessage("");
+    swal("Message Sent!", "Thank you for your question", "success");
+
+    resetFirstName();
+    resetLastName();
+    resetEmail();
+    resetMobile();
+    resetMessage();
   }
 
   return (
@@ -76,11 +145,17 @@ const ContactForm = () => {
         <div className={classes["form-control"]}>
           <div>
             <label htmlFor="firstname">First Name: </label>
+            {firstNameHasError && (
+              <p className={classes.errorText}>
+                Please enter a first name.
+              </p>
+            )}
             <input
               type="text"
               id="firstname"
+              value={firstNameValue}
               onChange={firstNameChangeHandler}
-              value={firstName}
+              onBlur={firstNameBlurHandler}
             />
           </div>
         </div>
@@ -88,11 +163,17 @@ const ContactForm = () => {
         <div className={classes["form-control"]}>
           <div>
             <label htmlFor="lastname">Last Name: </label>
+            {lastNameHasError && (
+              <p className={classes.errorText}>
+                Please enter a last name.
+              </p>
+            )}
             <input
               type="text"
               id="lastname"
+              value={lastNameValue}
               onChange={lastNameChangeHandler}
-              value={lastName}
+              onBlur={lastNameBlurHandler}
             />
           </div>
         </div>
@@ -100,11 +181,17 @@ const ContactForm = () => {
         <div className={classes["form-control"]}>
           <div>
             <label htmlFor="mobile">Mobile / Phone:</label>
+            {emailHasError && (
+              <p className={classes.errorText}>
+                Please enter a valid phone number.
+              </p>
+            )}
             <input
               type="number"
               id="mobile"
+              value={mobileValue}
               onChange={mobileChangeHandler}
-              value={mobile}
+              onBlur={mobileBlurHandler}
             />
           </div>
         </div>
@@ -112,11 +199,17 @@ const ContactForm = () => {
         <div className={classes["form-control"]}>
           <div>
             <label htmlFor="email">Email:</label>
+            {emailHasError && (
+              <p className={classes.errorText}>
+                Please enter a valid email address.
+              </p>
+            )}
             <input
               type="email"
               id="email"
+              value={emailValue}
               onChange={emailChangeHandler}
-              value={email}
+              onBlur={emailBlurHandler}
             />
           </div>
         </div>
@@ -125,15 +218,32 @@ const ContactForm = () => {
           className={`${classes["form-control"]} ${classes.message}`}
         >
           <label htmlFor="textarea">Message:</label>
+          {messageHasError && (
+            <p className={classes.errorText}>
+              Please enter a valid message.
+            </p>
+          )}
           <textarea
             form="contactform"
             id="message"
             name="message"
             value={message}
             onChange={messageChangeHandler}
+            onBlur={messageBlurHandler}
           ></textarea>
         </div>
-        <button className={classes.formbtn}>Send Inquiry</button>
+        <div
+          className={`${classes["form-control"]} ${classes.message}`}
+        >
+          <div className="wrappercol">
+            <button
+              className={classes.formbtn}
+              disabled={!formIsValid}
+            >
+              Send Inquiry
+            </button>
+          </div>
+        </div>
       </form>
     </div>
   );

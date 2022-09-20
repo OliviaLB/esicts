@@ -3,24 +3,27 @@
   border-radius: 10px;
   padding: 1.4rem 1.9rem;
   margin: 2rem;
-  min-width: 300px;
-  max-width: 500px;
+  min-width: 400px;
+  max-width: 400px;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
 }
 
 .card__body {
   padding: 2rem 1.5rem;
+  box-sizing: border-box;
 }
 
 .card__header {
-  background-image: none;
-  background-repeat: no-repeat;
-  background-size: cover;
+  object-fit: cover;
   position: relative;
-  height: 15rem;
+  box-sizing: border-box;
   border-radius: 10px;
-  margin: -1.5rem -2rem;
+  margin: -1.4rem -1.9rem;
   z-index: -2;
+  flex-grow: 1;
+  max-height: 25rem;
 }
 
 .blog__name {
@@ -45,17 +48,19 @@
   margin-right: auto;
 }
 
+.btn {
+  text-decoration: none;
+  font-weight: 500;
+  display: flex;
+  font-size: 1.8rem;
+  align-items: center;
+}
+
 .linkarrow {
   margin-left: 5px;
   transition: margin 0.15s;
 }
 
-button:hover .linkarrow {
+.btn:hover .linkarrow {
   margin-left: 10px;
-}
-
-@media screen and (min-width: 1024px) {
-  .card__header {
-    height: 25rem;
-  }
 }

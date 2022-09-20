@@ -1,13 +1,15 @@
 import { Redirect, Route, Switch } from "react-router-dom";
-import './App.css';
+import "./App.css";
 
 import About from "./Pages/About";
 import Welcome from "./Pages/Home";
 import Treatments from "./Pages/Treatments";
-import Blog from "./Pages/Blog";
 import Contact from "./Pages/Contact";
-import Layout from "./Components/Layout/Layout"
-import Blogger from "./Pages/Blogger";
+import Layout from "./Components/Layout/Layout";
+import AllBlogs from "./Pages/AllBlogs";
+import BlogDetail from "./Pages/BlogDetail";
+import NewBlog from "./Pages/NewBlog";
+import NotFound from "./Pages/NotFound";
 
 function App() {
   return (
@@ -25,15 +27,23 @@ function App() {
         <Route path="/treatments">
           <Treatments />
         </Route>
-
-        <Route path="/blog">
-          <Blog />
-        </Route>
         <Route path="/contact">
           <Contact />
         </Route>
-        <Route path="/blogger">
-          <Blogger />
+        <Route path="/" exact>
+          <Redirect to="/blogs" />
+        </Route>
+        <Route path="/blogs" exact>
+          <AllBlogs />
+        </Route>
+        <Route path="/blogs/:blogId">
+          <BlogDetail />
+        </Route>
+        <Route path="/new-blog">
+          <NewBlog />
+        </Route>
+        <Route path="*">
+          <NotFound />
         </Route>
       </Switch>
     </Layout>
