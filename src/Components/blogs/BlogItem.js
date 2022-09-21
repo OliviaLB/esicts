@@ -1,9 +1,15 @@
 import { Link } from "react-router-dom";
-import { getSingleImage } from "../../lib/api";
+import { handleDelete } from "../../lib/api";
 
 import classes from "./BlogItem.module.css";
 
 const BlogItem = (props) => {
+  const blogID = props.id;
+
+  const deletePosts = () => {
+    handleDelete(blogID);
+  };
+
   return (
     <div className={`${classes.card} flex1x5 `}>
       <img
@@ -21,6 +27,25 @@ const BlogItem = (props) => {
             className={`${classes.linkarrow} fa-sharp fa-solid fa-arrow-right`}
           ></i>
         </Link>
+      </div>
+      <div className={classes.editorTools}>
+        <div className={classes.tooltip}>
+          <span className={classes.tooltiptext}>Delete Post</span>
+
+          <button onClick={deletePosts}>
+            <i
+              className={`${classes.editorButton} fa-sharp fa-solid fa-trash`}
+            ></i>
+          </button>
+        </div>
+        <div className={classes.tooltip}>
+          <span className={classes.tooltiptext}>Edit Post</span>
+          <button>
+            <i
+              className={`${classes.editorButton} fa-sharp fa-solid fa-pen-to-square`}
+            ></i>
+          </button>
+        </div>
       </div>
     </div>
   );

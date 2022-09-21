@@ -64,3 +64,41 @@
 .btn:hover .linkarrow {
   margin-left: 10px;
 }
+
+.editorTools {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 0rem 8rem;
+  font-size: 2.2rem;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  font-size: 1.5rem;
+
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+  width: 100px;
+  top: 110%;
+  left: 100%;
+  margin-left: -60px;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
