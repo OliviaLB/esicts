@@ -1,9 +1,12 @@
 import {
-  getStorage,
+  getDatabase,
   ref,
-  list,
-  getDownloadURL,
-} from "firebase/storage";
+  child,
+  get,
+  remove,
+} from "firebase/database";
+
+// init services
 
 const FIREBASE_DOMAIN =
   "https://esic-d92c3-default-rtdb.europe-west1.firebasedatabase.app/";
@@ -48,22 +51,6 @@ export async function getSingleBlog(blogId) {
   return loadedBlog;
 }
 
-export async function getSingleImage(blogId) {
-  console.log(blogId);
-  const storage = await getStorage();
-  const listRef = await ref(storage, "banners/");
-  const response = await list(listRef);
-
-  const data = await response.items.forEach((item) => {
-    getDownloadURL(item).then((url) => {
-      var result = url;
-      console.log(result);
-    });
-  });
-
-  return data;
-}
-
 export async function addBlog(blogData) {
   const response = await fetch(`${FIREBASE_DOMAIN}/blogs.json`, {
     method: "POST",
@@ -79,6 +66,12 @@ export async function addBlog(blogData) {
   }
 
   return null;
+}
+
+export async function handleDelete(blogID) {
+  const dbRef = ref(getDatabase());
+  const getBlog = await get(child(dbRef, `blogs/${blogID}`));
+  await getBlog.remove;
 }
 
 export async function addComment(requestData) {
