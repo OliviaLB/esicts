@@ -64,32 +64,6 @@ const ContactForm = () => {
     formIsValid = true;
   }
 
-  // const [firstName, setfirstName] = useState("");
-
-  // const [lastName, setlastName] = useState("");
-
-  // const [mobile, setMobile] = useState("");
-
-  // const [email, setEmail] = useState("");
-
-  // const [message, setMessage] = useState("");
-
-  // const firstNameChangeHandler = (event: any) => {
-  //   setfirstName(event.target.value);
-  // };
-  // const lastNameChangeHandler = (event: any) => {
-  //   setlastName(event.target.value);
-  // };
-  // const mobileChangeHandler = (event: any) => {
-  //   setMobile(event.target.value);
-  // };
-  // const emailChangeHandler = (event: any) => {
-  //   setEmail(event.target.value);
-  // };
-  // const messageChangeHandler = (event: any) => {
-  //   setMessage(event.target.value);
-  // };
-
   const inquiry = {
     id: uuid(),
     firstNameValue,

@@ -1,15 +1,14 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-import HighlightedBlog from "../Components/blogs/HighlightedBlog";
 import useHttp from "../hooks/use-http";
 import { getSingleBlog } from "../lib/api";
 import LoadingSpinner from "../Components/UI/LoadingSpinner";
+import BlogEditor from "../Components/blogs/BlogEditor";
 
 const BlogDetail = () => {
   const params = useParams();
-
-  const { blogId } = params;
+  const blogId = params.blogId;
 
   const {
     sendRequest,
@@ -44,7 +43,7 @@ const BlogDetail = () => {
 
   return (
     <div className="wrappercol">
-      <HighlightedBlog
+      <BlogEditor
         title={loadedBlog.title}
         imageID={loadedBlog.imageID}
         text={loadedBlog.text}

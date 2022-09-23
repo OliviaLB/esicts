@@ -1,5 +1,6 @@
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import { useHistory, useLocation } from "react-router-dom";
+import { deleteBlogs } from "../../lib/api";
 
 import BlogItem from "./BlogItem";
 import classes from "./BlogList.module.css";
@@ -17,18 +18,27 @@ const sortBlogs = (blogs, ascending) => {
 const BlogList = (props) => {
   const history = useHistory();
   const location = useLocation();
+  const [blogs, setBlogs] = useState(props.blogs);
 
   const queryParams = new URLSearchParams(location.search);
 
   const isSortingAscending = queryParams.get("sort") === "asc";
 
-  const sortedBlogs = sortBlogs(props.blogs, isSortingAscending);
+  const sortedBlogs = sortBlogs(blogs, isSortingAscending);
 
   const changeSortingHandler = () => {
     history.push({
       pathname: location.pathname,
       search: `?sort=${isSortingAscending ? "desc" : "asc"}`,
     });
+  };
+
+  const deletePosts = async (blogID) => {
+    deleteBlogs(blogID);
+    const result = sortedBlogs.filter(
+      (sortedBlog) => sortedBlog.id !== blogID
+    );
+    setBlogs(result);
   };
 
   return (
@@ -47,6 +57,7 @@ const BlogList = (props) => {
             description={blog.description}
             imageID={blog.imageID}
             text={blog.text}
+            deletePosts={deletePosts}
           />
         ))}
       </div>

@@ -1,10 +1,5 @@
-import {
-  getDatabase,
-  ref,
-  child,
-  get,
-  remove,
-} from "firebase/database";
+import { async } from "@firebase/util";
+import { getDatabase, ref, get, remove } from "firebase/database";
 
 // init services
 
@@ -68,53 +63,10 @@ export async function addBlog(blogData) {
   return null;
 }
 
-export async function handleDelete(blogID) {
-  const dbRef = ref(getDatabase());
-  const getBlog = await get(child(dbRef, `blogs/${blogID}`));
-  await getBlog.remove;
+export async function deleteBlogs(blogID) {
+  const blogRef = await ref(getDatabase(), `blogs/${blogID}`);
+  const getBlog = await get(blogRef);
+  await remove(blogRef);
 }
 
-export async function addComment(requestData) {
-  const response = await fetch(
-    `${FIREBASE_DOMAIN}/comments/${requestData.blogId}.json`,
-    {
-      method: "POST",
-      body: JSON.stringify(requestData.commentData),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }
-  );
-  const data = await response.json();
-
-  if (!response.ok) {
-    throw new Error(data.message || "Could not add comment.");
-  }
-
-  return { commentId: data.name };
-}
-
-export async function getAllComments(blogId) {
-  const response = await fetch(
-    `${FIREBASE_DOMAIN}/comments/${blogId}.json`
-  );
-
-  const data = await response.json();
-
-  if (!response.ok) {
-    throw new Error(data.message || "Could not get comments.");
-  }
-
-  const transformedComments = [];
-
-  for (const key in data) {
-    const commentObj = {
-      id: key,
-      ...data[key],
-    };
-
-    transformedComments.push(commentObj);
-  }
-
-  return transformedComments;
-}
+export async function updateBlogs(blogData) {}

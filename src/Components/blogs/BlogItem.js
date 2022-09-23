@@ -1,14 +1,8 @@
 import { Link } from "react-router-dom";
-import { handleDelete } from "../../lib/api";
-
 import classes from "./BlogItem.module.css";
 
 const BlogItem = (props) => {
   const blogID = props.id;
-
-  const deletePosts = () => {
-    handleDelete(blogID);
-  };
 
   return (
     <div className={`${classes.card} flex1x5 `}>
@@ -32,19 +26,20 @@ const BlogItem = (props) => {
         <div className={classes.tooltip}>
           <span className={classes.tooltiptext}>Delete Post</span>
 
-          <button onClick={deletePosts}>
+          <button onClick={() => props.deletePosts(blogID)}>
             <i
               className={`${classes.editorButton} fa-sharp fa-solid fa-trash`}
             ></i>
           </button>
         </div>
+
         <div className={classes.tooltip}>
           <span className={classes.tooltiptext}>Edit Post</span>
-          <button>
+          <Link className={classes.btn} to={`/blogedit/${props.id}`}>
             <i
               className={`${classes.editorButton} fa-sharp fa-solid fa-pen-to-square`}
             ></i>
-          </button>
+          </Link>
         </div>
       </div>
     </div>
