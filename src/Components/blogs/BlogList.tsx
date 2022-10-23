@@ -1,12 +1,13 @@
 import { Fragment, useState } from "react";
 import { useHistory, useLocation } from "react-router-dom";
-import { deleteBlogs } from "../../lib/api";
+import { deleteBlog } from "../../lib/api";
+import { Blog } from "./Blog";
 
 import BlogItem from "./BlogItem";
 import classes from "./BlogList.module.css";
 
-const sortBlogs = (blogs, ascending) => {
-  return blogs.sort((blogA, blogB) => {
+const sortBlogs = (blogs: any, ascending: any) => {
+  return blogs.sort((blogA: any, blogB: any) => {
     if (ascending) {
       return blogA.id > blogB.id ? 1 : -1;
     } else {
@@ -15,7 +16,7 @@ const sortBlogs = (blogs, ascending) => {
   });
 };
 
-const BlogList = (props) => {
+const BlogList = (props: any) => {
   const history = useHistory();
   const location = useLocation();
   const [blogs, setBlogs] = useState(props.blogs);
@@ -33,10 +34,10 @@ const BlogList = (props) => {
     });
   };
 
-  const deletePosts = async (blogID) => {
-    deleteBlogs(blogID);
+  const deletePosts = async (blogID: string) => {
+    deleteBlog(blogID);
     const result = sortedBlogs.filter(
-      (sortedBlog) => sortedBlog.id !== blogID
+      (sortedBlog: Blog) => sortedBlog.id !== blogID
     );
     setBlogs(result);
   };
@@ -49,14 +50,14 @@ const BlogList = (props) => {
         </button>
       </div>
       <div className="flexcontainer">
-        {sortedBlogs.map((blog) => (
+        {sortedBlogs.map((blog: Blog) => (
           <BlogItem
             key={blog.id}
             id={blog.id}
             title={blog.title}
             description={blog.description}
-            imageID={blog.imageID}
-            text={blog.text}
+            imageId={blog.imageId}
+            html={blog.html}
             deletePosts={deletePosts}
           />
         ))}

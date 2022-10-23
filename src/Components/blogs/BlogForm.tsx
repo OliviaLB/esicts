@@ -1,4 +1,4 @@
-import { Fragment, useRef, useState, useEffect } from "react";
+import { Fragment, useState, useEffect } from "react";
 import { Prompt } from "react-router-dom";
 import { useQuill } from "react-quilljs";
 import "quill/dist/quill.snow.css";
@@ -11,38 +11,43 @@ import { ref, uploadBytes } from "firebase/storage";
 import Card from "../UI/Card";
 import LoadingSpinner from "../UI/LoadingSpinner";
 import classes from "./BlogForm.module.css";
+import { Blog } from "./Blog";
 
-const BlogForm = (props) => {
+const BlogForm = (props: Blog) => {
   const { quill, quillRef } = useQuill();
   const [isEntering, setIsEntering] = useState(false);
-  const [image, setImage] = useState(null);
+  const [image, setImage]: any = useState(null);
   const [html, setHtml] = useState();
+  const [title, setTitle] = useState();
+  const [description, setDescription] = useState();
 
-  const titleInputRef = useRef();
-  const descriptionInputRef = useRef();
+  const titleChangeHandler = (event: any) => {
+    setTitle(event.target.value);
+  };
+  const descriptionChangeHandler = (event: any) => {
+    setDescription(event.target.value);
+  };
 
-  const imageChangeHandler = (event) => {
+  const imageChangeHandler = (event: any) => {
     setImage(event.target.files[0]);
     console.log(event.target.files[0]);
   };
 
-  function submitFormHandler(event) {
+  function submitFormHandler(event: any) {
     event.preventDefault();
 
-    const enteredTitle = titleInputRef.current.value;
-    const enteredDescription = descriptionInputRef.current.value;
-    const imageID = image["name"] + uuid();
+    const imageId = image["name"] + uuid();
 
     // optional: Could validate here
 
     props.onAddBlog({
-      title: enteredTitle,
-      description: enteredDescription,
-      text: html,
-      imageID,
+      title,
+      description,
+      html,
+      imageId,
     });
 
-    const imageRef = ref(storage, `banners/${imageID}`);
+    const imageRef = ref(storage, `banners/${imageId}`);
     uploadBytes(imageRef, image);
     swal("blog Sent!", "Submission Success", "success");
   }
@@ -86,7 +91,11 @@ const BlogForm = (props) => {
 
           <div className={classes.control}>
             <label htmlFor="title">Title</label>
-            <input type="text" id="title" ref={titleInputRef} />
+            <input
+              type="text"
+              id="title"
+              onChange={titleChangeHandler}
+            />
           </div>
 
           <div className={classes.control}>
@@ -94,7 +103,7 @@ const BlogForm = (props) => {
             <input
               type="text"
               id="description"
-              ref={descriptionInputRef}
+              onChange={descriptionChangeHandler}
             />
           </div>
 

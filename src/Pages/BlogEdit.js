@@ -33,7 +33,7 @@ const BlogDetail = () => {
     return <p className="wrappercol">{error}</p>;
   }
 
-  if (!loadedBlog.text) {
+  if (!loadedBlog.html) {
     return (
       <div className="wrappercol">
         <h2>No blog found!</h2>
@@ -45,8 +45,8 @@ const BlogDetail = () => {
     <div className="wrappercol">
       <BlogEditor
         title={loadedBlog.title}
-        imageID={loadedBlog.imageID}
-        text={loadedBlog.text}
+        imageId={loadedBlog.imageId}
+        html={loadedBlog.html}
         description={loadedBlog.description}
       />
     </div>

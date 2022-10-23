@@ -1,40 +1,46 @@
-import { Fragment, useRef, useState, useEffect } from "react";
+import { Fragment, useState, useEffect } from "react";
 import { Prompt } from "react-router-dom";
 import { useQuill } from "react-quilljs";
 import "quill/dist/quill.snow.css";
 import swal from "sweetalert";
-import { Blog } from "./Blog";
+import { useParams } from "react-router-dom";
 
 import Card from "../UI/Card";
 import LoadingSpinner from "../UI/LoadingSpinner";
 import classes from "./BlogForm.module.css";
 
-import { updateBlogs } from "../../lib/api";
+import { updateBlog } from "../../lib/api";
 
 const BlogEditor = (props) => {
+  const params = useParams();
+  const blogId = params.blogId;
   const { quill, quillRef } = useQuill();
   const [isEntering, setIsEntering] = useState(false);
-  const [html, setHtml] = useState();
+  const [html, setHtml] = useState(props.html);
+  const [title, setTitle] = useState(props.title);
+  const [description, setDescription] = useState(props.description);
 
-  const titleInputRef = useRef();
-  const descriptionInputRef = useRef();
+  const titleChangeHandler = (event) => {
+    setTitle(event.target.value);
+  };
+  const descriptionChangeHandler = (event) => {
+    setDescription(event.target.value);
+  };
 
   function submitFormHandler(event) {
     event.preventDefault();
-    const enteredTitle = titleInputRef.current.value;
-    const enteredDescription = descriptionInputRef.current.value;
 
-    const blogData = [
-      {
-        title: enteredTitle,
-        description: enteredDescription,
-        text: html,
-      },
-    ];
+    const blogData = {
+      id: blogId,
+      title,
+      description,
+      html,
+    };
 
-    updateBlogs(blogData);
+    console.log(blogData);
+    updateBlog(blogData);
 
-    swal("blog updated!", "Submission Success", "success");
+    swal("Blog updated!", "Submission Success", "success");
   }
 
   useEffect(() => {
@@ -79,8 +85,8 @@ const BlogEditor = (props) => {
             <input
               type="text"
               id="title"
-              ref={titleInputRef}
-              value={props.title}
+              onChange={titleChangeHandler}
+              value={title}
             />
           </div>
 
@@ -89,14 +95,14 @@ const BlogEditor = (props) => {
             <input
               type="text"
               id="description"
-              ref={descriptionInputRef}
-              value={props.description}
+              onChange={descriptionChangeHandler}
+              value={description}
             />
           </div>
 
           <div className={classes.editor}>
             <div
-              dangerouslySetInnerHTML={{ __html: props.text }}
+              dangerouslySetInnerHTML={{ __html: props.html }}
               className={classes.texteditor}
               ref={quillRef}
               id="text"

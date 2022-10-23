@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import classes from "./HighlightedBlog.module.css";
 
 const HighlightedBlog = (props) => {
-  console.log(props.text);
+  console.log(props.html);
 
   return (
     <div className={classes.blogWrapper}>
@@ -12,9 +12,9 @@ const HighlightedBlog = (props) => {
         ></i>{" "}
         Return
       </Link>
-      <div class={classes.blogContent}>
+      <div className={classes.blogContent}>
         <h3>{props.title}</h3>
-        <div dangerouslySetInnerHTML={{ __html: props.text }} />
+        <div dangerouslySetInnerHTML={{ __html: props.html }} />
       </div>
     </div>
   );

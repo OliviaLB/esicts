@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import classes from "./BlogItem.module.css";
+import { Blog } from "./Blog";
 
-const BlogItem = (props) => {
+const BlogItem = (props: Blog) => {
   const blogID = props.id;
 
   return (
