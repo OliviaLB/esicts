@@ -13,27 +13,27 @@ import LoadingSpinner from "../UI/LoadingSpinner";
 import classes from "./BlogForm.module.css";
 import { Blog } from "./Blog";
 
-const BlogForm = (props: Blog) => {
+const BlogForm = (props) => {
   const { quill, quillRef } = useQuill();
   const [isEntering, setIsEntering] = useState(false);
-  const [image, setImage]: any = useState(null);
+  const [image, setImage] = useState(null);
   const [html, setHtml] = useState();
   const [title, setTitle] = useState();
   const [description, setDescription] = useState();
 
-  const titleChangeHandler = (event: any) => {
+  const titleChangeHandler = (event) => {
     setTitle(event.target.value);
   };
-  const descriptionChangeHandler = (event: any) => {
+  const descriptionChangeHandler = (event) => {
     setDescription(event.target.value);
   };
 
-  const imageChangeHandler = (event: any) => {
+  const imageChangeHandler = (event) => {
     setImage(event.target.files[0]);
     console.log(event.target.files[0]);
   };
 
-  function submitFormHandler(event: any) {
+  function submitFormHandler(event) {
     event.preventDefault();
 
     const imageId = image["name"] + uuid();
