@@ -1,13 +1,12 @@
 import { Fragment, useState } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import { deleteBlog } from "../../lib/api";
-import { Blog } from "./Blog";
 
 import BlogItem from "./BlogItem";
 import classes from "./BlogList.module.css";
 
-const sortBlogs = (blogs: any, ascending: any) => {
-  return blogs.sort((blogA: any, blogB: any) => {
+const sortBlogs = (blogs, ascending) => {
+  return blogs.sort((blogA, blogB) => {
     if (ascending) {
       return blogA.id > blogB.id ? 1 : -1;
     } else {
@@ -16,7 +15,7 @@ const sortBlogs = (blogs: any, ascending: any) => {
   });
 };
 
-const BlogList = (props: any) => {
+const BlogList = (props) => {
   const history = useHistory();
   const location = useLocation();
   const [blogs, setBlogs] = useState(props.blogs);
@@ -34,10 +33,10 @@ const BlogList = (props: any) => {
     });
   };
 
-  const deletePosts = async (blogID: string) => {
+  const deletePosts = async (blogID) => {
     deleteBlog(blogID);
     const result = sortedBlogs.filter(
-      (sortedBlog: Blog) => sortedBlog.id !== blogID
+      (sortedBlog) => sortedBlog.id !== blogID
     );
     setBlogs(result);
   };
@@ -50,7 +49,7 @@ const BlogList = (props: any) => {
         </button>
       </div>
       <div className="flexcontainer">
-        {sortedBlogs.map((blog: Blog) => (
+        {sortedBlogs.map((blog) => (
           <BlogItem
             key={blog.id}
             id={blog.id}
