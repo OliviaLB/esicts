@@ -13,7 +13,7 @@ import { addImage } from '../../lib/api';
 const BlogForm = (props: any) => {
 	const { quill, quillRef } = useQuill();
 	const [isEntering, setIsEntering] = useState(false);
-	const [image, setImage] = useState<any>(null);
+	const [image, setImage] = useState<File | null>(null);
 	const [html, setHtml] = useState();
 	const [title, setTitle] = useState<string | undefined>();
 	const [description, setDescription] = useState<string | undefined>();
@@ -25,25 +25,28 @@ const BlogForm = (props: any) => {
 		setDescription(event.target.value);
 	};
 
-	const imageChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-		const file = readFileDataAsBase64(event);
+	const imageChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+		// const file = readFileDataAsBase64(event);
+		// console.log(file);
+		if (!e.target.files) return;
+		let file = e.target.files[0];
 		console.log(file);
 		setImage(file);
 	};
 
-	function readFileDataAsBase64(e: React.ChangeEvent<HTMLInputElement>) {
-		if (!e.target.files) return;
+	// function readFileDataAsBase64(e: React.ChangeEvent<HTMLInputElement>) {
+	// 	if (!e.target.files) return;
 
-		const file = e.target.files[0];
+	// 	const file = e.target.files[0];
 
-		return new Promise((resolve, reject) => {
-			const reader = new FileReader();
+	// 	return new Promise((resolve, reject) => {
+	// 		const reader = new FileReader();
 
-			reader.onload = (event) => resolve(event!.target!.result);
-			reader.onerror = (err) => reject(err);
-			reader.readAsDataURL(file);
-		});
-	}
+	// 		reader.onload = (event) => resolve(event!.target!.result);
+	// 		reader.onerror = (err) => reject(err);
+	// 		reader.readAsDataURL(file);
+	// 	});
+	// }
 
 	useEffect(() => {
 		if (quill) {
@@ -66,11 +69,11 @@ const BlogForm = (props: any) => {
 		event.preventDefault();
 		const token = uuid();
 
-		props.onAddBlog({
-			title,
-			description,
-			html,
-		});
+		// props.onAddBlog({
+		// 	title,
+		// 	description,
+		// 	html,
+		// });
 		addImage(image, token);
 	}
 

@@ -87,7 +87,7 @@ export async function addImage(image: File | null, token: string) {
 		.post('/Blogs/Blog/UpdateBlogImage', { image, id: token }, headers)
 		.then(function (response) {})
 		.catch(function (error) {
-			alert(error);
+			console.log(error);
 		});
 }
 
