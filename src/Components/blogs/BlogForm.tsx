@@ -2,7 +2,7 @@ import { Fragment, useState, useEffect } from 'react';
 import { Prompt } from 'react-router-dom';
 import { useQuill } from 'react-quilljs';
 import 'quill/dist/quill.snow.css';
-import uuid from 'react-uuid';
+import { v4 as uuidv4 } from 'uuid';
 import swal from 'sweetalert';
 
 import Card from '../UI/Card';
@@ -13,7 +13,9 @@ import { addImage } from '../../lib/api';
 const BlogForm = (props: any) => {
 	const { quill, quillRef } = useQuill();
 	const [isEntering, setIsEntering] = useState(false);
-	const [image, setImage] = useState<File | null>(null);
+	const [selectedFile, setSelectedFile] = useState<File | null>(null);
+	const [encodedImage, setEncodedImage] = useState('');
+	const [image, setImage] = useState('');
 	const [html, setHtml] = useState();
 	const [title, setTitle] = useState<string | undefined>();
 	const [description, setDescription] = useState<string | undefined>();
@@ -25,28 +27,25 @@ const BlogForm = (props: any) => {
 		setDescription(event.target.value);
 	};
 
-	const imageChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-		// const file = readFileDataAsBase64(event);
-		// console.log(file);
-		if (!e.target.files) return;
-		let file = e.target.files[0];
-		console.log(file);
-		setImage(file);
+	const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+		const file = event.target.files && event.target.files[0];
+		if (file) {
+			setSelectedFile(file);
+			const reader = new FileReader();
+			reader.readAsDataURL(file);
+			reader.onload = () => {
+				if (reader.result) {
+					setImage(reader.result.toString());
+					const encodedImage = reader.result.toString();
+					console.log(encodedImage);
+					const base64result = encodedImage.split(',')[1];
+					const attribute = encodedImage.split(',')[0];
+					setImage(attribute);
+					setEncodedImage(base64result);
+				}
+			};
+		}
 	};
-
-	// function readFileDataAsBase64(e: React.ChangeEvent<HTMLInputElement>) {
-	// 	if (!e.target.files) return;
-
-	// 	const file = e.target.files[0];
-
-	// 	return new Promise((resolve, reject) => {
-	// 		const reader = new FileReader();
-
-	// 		reader.onload = (event) => resolve(event!.target!.result);
-	// 		reader.onerror = (err) => reject(err);
-	// 		reader.readAsDataURL(file);
-	// 	});
-	// }
 
 	useEffect(() => {
 		if (quill) {
@@ -67,14 +66,24 @@ const BlogForm = (props: any) => {
 
 	function submitFormHandler(event: React.SyntheticEvent) {
 		event.preventDefault();
-		const token = uuid();
+		const token = uuidv4();
 
-		// props.onAddBlog({
-		// 	title,
-		// 	description,
-		// 	html,
-		// });
-		addImage(image, token);
+		try {
+			props.onAddBlog({
+				title,
+				description,
+				html,
+			});
+		} catch (error) {
+			console.error(error);
+		}
+
+		try {
+			addImage(encodedImage, token);
+			console.log('Image uploaded successfully');
+		} catch (error) {
+			console.error(error);
+		}
 	}
 
 	return (
@@ -85,6 +94,11 @@ const BlogForm = (props: any) => {
 					'Are you sure you want to leave? All your entered data will be lost!'
 				}
 			/>
+
+			<img
+				src={`${image},${encodedImage}`}
+				alt=""
+			></img>
 			<Card>
 				<form
 					onFocus={formFocusedHandler}
@@ -120,7 +134,7 @@ const BlogForm = (props: any) => {
 						<input
 							type="file"
 							id="image"
-							onChange={imageChangeHandler}
+							onChange={handleFileChange}
 						/>
 					</div>
 

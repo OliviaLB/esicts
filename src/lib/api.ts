@@ -82,7 +82,7 @@ export async function deleteBlog(blogId: string) {
 	console.log(deleteBlog);
 }
 
-export async function addImage(image: File | null, token: string) {
+export async function addImage(image: string, token: string) {
 	client
 		.post('/Blogs/Blog/UpdateBlogImage', { image, id: token }, headers)
 		.then(function (response) {})
