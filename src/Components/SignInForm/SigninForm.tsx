@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import uuid from 'react-uuid';
 import { SignIn } from '../../lib/Authentication';
 import styles from './SigninForm.module.css';
@@ -19,6 +20,7 @@ const SigninForm = () => {
 	const onChangePassword = (event: React.FormEvent<HTMLInputElement>) => {
 		setPassword(event.currentTarget.value);
 	};
+	const history = useHistory();
 
 	const onFormSubmit = () => {
 		if (rememberUserId) {
@@ -28,9 +30,8 @@ const SigninForm = () => {
 		}
 		if (!loggingIn) {
 			setLoggingIn(true);
-			// SignIn(userName, password, rememberUserId);
-			const token = uuid();
-			localStorage.setItem('token', token);
+			SignIn(userName, password);
+			history.push('/blogs');
 		}
 	};
 
@@ -52,7 +53,7 @@ const SigninForm = () => {
 
 					<input
 						autoFocus
-						type="email"
+						type="text"
 						id="username"
 						className={styles.textInput}
 						autoComplete="email"

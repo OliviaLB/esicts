@@ -1,6 +1,4 @@
 import classes from './ContactForm.module.css';
-import uuid from 'react-uuid';
-import swal from 'sweetalert';
 import useInput from '../../hooks/use-input';
 import { postInquiry } from '../../lib/api';
 
@@ -59,20 +57,9 @@ const ContactForm = () => {
 		formIsValid = true;
 	}
 
-	const inquiry = {
-		id: uuid(),
-		firstName,
-		lastName,
-		mobile,
-		email,
-		message,
-	};
-
 	function submitHandler(event: any) {
 		event.preventDefault();
-		postInquiry(inquiry);
-
-		swal('Message Sent!', 'Thank you for your question', 'success');
+		postInquiry(firstName, lastName, mobile, email, message);
 
 		resetFirstName();
 		resetLastName();

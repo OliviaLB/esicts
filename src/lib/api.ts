@@ -1,9 +1,11 @@
 import axios, { AxiosRequestConfig } from 'axios';
+import swal from 'sweetalert';
 import { Blog, BlogData } from '../Components/blogs/Blog-Interfaces';
 
 const headers: AxiosRequestConfig = {
 	headers: {
-		'Content-Type': 'application/json; charset=utf-8',
+		'Content-Type': 'application/json',
+		accept: '*/*',
 	},
 	responseType: 'json',
 };
@@ -80,9 +82,9 @@ export async function deleteBlog(blogId: string) {
 	console.log(deleteBlog);
 }
 
-export async function addImage(image: File | null) {
+export async function addImage(image: File | null, token: string) {
 	client
-		.post('/Blogs/Blog/UpdateBlogImage', image)
+		.post('/Blogs/Blog/UpdateBlogImage', { image, id: token })
 		.then(function (response) {
 			return response;
 		})
@@ -91,21 +93,21 @@ export async function addImage(image: File | null) {
 		});
 }
 
-interface inquiry {
-	id: string;
-	firstName: string;
-	lastName: string;
-	mobile: string;
-	email: string;
-	message: string;
-}
-export async function postInquiry(inquiry: inquiry) {
+export async function postInquiry(
+	firstName: string,
+	lastName: string,
+	mobile: string,
+	email: string,
+	message: string
+) {
 	client
-		.post('/Blogs/Blog/UpdateBlog', inquiry)
-		.then(function (response) {
-			console.log(response);
-		})
+		.post(
+			`/Blogs/Blog/SendEmail?subject=${`Email from ${firstName} + ${lastName}`}&isHtml=true`,
+			`<b>Name</b>: ${firstName} ${lastName} <br> <b>Email:</b> ${email} <br> <b>Phone Number:</b> ${mobile} <br> <b>Message:</b> ${message}`,
+			headers
+		)
+		.then(function (response) {})
 		.catch(function (error) {
-			console.log(error);
+			alert(error);
 		});
 }
