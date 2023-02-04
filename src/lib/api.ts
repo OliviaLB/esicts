@@ -84,12 +84,10 @@ export async function deleteBlog(blogId: string) {
 
 export async function addImage(image: File | null, token: string) {
 	client
-		.post('/Blogs/Blog/UpdateBlogImage', { image, id: token })
-		.then(function (response) {
-			return response;
-		})
+		.post('/Blogs/Blog/UpdateBlogImage', { image, id: token }, headers)
+		.then(function (response) {})
 		.catch(function (error) {
-			return error;
+			alert(error);
 		});
 }
 
