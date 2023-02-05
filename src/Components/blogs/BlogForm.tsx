@@ -3,7 +3,6 @@ import { Prompt } from 'react-router-dom';
 import { useQuill } from 'react-quilljs';
 import 'quill/dist/quill.snow.css';
 import { v4 as uuidv4 } from 'uuid';
-import swal from 'sweetalert';
 
 import Card from '../UI/Card';
 import LoadingSpinner from '../UI/LoadingSpinner';
@@ -19,6 +18,8 @@ const BlogForm = (props: any) => {
 	const [html, setHtml] = useState();
 	const [title, setTitle] = useState<string | undefined>();
 	const [description, setDescription] = useState<string | undefined>();
+
+	const [responseData, setResponseData] = useState(null);
 
 	const titleChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
 		setTitle(event.target.value);
@@ -37,7 +38,6 @@ const BlogForm = (props: any) => {
 				if (reader.result) {
 					setImage(reader.result.toString());
 					const encodedImage = reader.result.toString();
-					console.log(encodedImage);
 					const base64result = encodedImage.split(',')[1];
 					const attribute = encodedImage.split(',')[0];
 					setImage(attribute);
@@ -64,26 +64,28 @@ const BlogForm = (props: any) => {
 		setIsEntering(true);
 	};
 
-	function submitFormHandler(event: React.SyntheticEvent) {
-		event.preventDefault();
-		const token = uuidv4();
-
+	const handlePostData = async () => {
 		try {
-			props.onAddBlog({
-				title,
+			const token = '00000000-0000-0000-0000-000000000000';
+			const imageGUID = await addImage(encodedImage, token);
+			setResponseData(imageGUID);
+
+			const postBlog = await props.onAddBlog({
+				id: token,
 				description,
 				html,
+				imageId: imageGUID,
+				title,
 			});
+			console.log(postBlog);
 		} catch (error) {
 			console.error(error);
 		}
+	};
 
-		try {
-			addImage(encodedImage, token);
-			console.log('Image uploaded successfully');
-		} catch (error) {
-			console.error(error);
-		}
+	function submitFormHandler(event: React.SyntheticEvent) {
+		event.preventDefault();
+		handlePostData();
 	}
 
 	return (
@@ -95,10 +97,6 @@ const BlogForm = (props: any) => {
 				}
 			/>
 
-			<img
-				src={`${image},${encodedImage}`}
-				alt=""
-			></img>
 			<Card>
 				<form
 					onFocus={formFocusedHandler}

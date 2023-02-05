@@ -42,14 +42,12 @@ const BlogDetail = () => {
 	}
 
 	return (
-		<div className="wrappercol">
-			<HighlightedBlog
-				title={loadedBlog.title}
-				imageId={loadedBlog.imageId}
-				html={loadedBlog.html}
-				description={loadedBlog.description}
-			/>
-		</div>
+		<HighlightedBlog
+			title={loadedBlog.title}
+			imageId={loadedBlog.imageId}
+			html={loadedBlog.html}
+			description={loadedBlog.description}
+		/>
 	);
 };
 

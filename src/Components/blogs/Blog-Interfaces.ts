@@ -4,8 +4,7 @@ export interface Blog {
 	description: string;
 	imageId: string;
 	html?: string | undefined;
-	image?: string;
-	deletePosts(id: string): void;
+	deletePosts(id: string, blogImageId: string): void;
 	onAddBlog({}): void;
 	isLoading(): any;
 }

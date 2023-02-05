@@ -1,42 +1,43 @@
 .blogWrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 5rem 3rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 5rem 3rem;
 }
 
 .blogContent {
-  padding: 0rem 20vw;
-  background: var(--color-shade);
-  border-radius: var(--border-radius);
+	width: 60%;
+	padding: 0rem 5rem;
+	background: var(--color-shade);
+	border-radius: var(--border-radius);
 }
 
 .blogContent p {
-  margin-bottom: 20px;
+	margin-bottom: 20px;
 }
 
 .returnLink {
-  display: flex;
-  margin-left: 20vw;
-  align-self: start;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  font-size: 2rem;
+	display: flex;
+	align-self: start;
+	align-items: center;
+	justify-content: center;
+	text-decoration: none;
+	font-size: 2rem;
+	margin-bottom: 2rem;
 }
 
 .linkArrow {
-  margin-right: 10px;
+	margin-right: 10px;
 }
 
 @media screen and (max-width: 768px) {
-  .blogContent {
-    padding: 0rem 10vw;
-  }
+	.blogContent {
+		width: 100%;
+	}
 
-  .returnLink {
-    margin-left: 0;
-    align-self: center;
-  }
+	.returnLink {
+		margin-left: 0;
+		align-self: center;
+	}
 }

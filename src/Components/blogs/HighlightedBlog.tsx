@@ -3,8 +3,7 @@ import { BlogData } from './Blog-Interfaces';
 import classes from './HighlightedBlog.module.css';
 
 const HighlightedBlog = (props: BlogData) => {
-	console.log(props.html);
-
+	console.log(props.imageId);
 	return (
 		<div className={classes.blogWrapper}>
 			<Link
@@ -12,6 +11,7 @@ const HighlightedBlog = (props: BlogData) => {
 				className={classes.returnLink}
 			>
 				<i className={`${classes.linkArrow} fa-sharp fa-solid fa-arrow-turn-down-left`}></i> Return
+				to Blogs
 			</Link>
 			<div className={classes.blogContent}>
 				<h3>{props.title}</h3>

@@ -42,18 +42,13 @@ export async function getSingleBlog(blogId: string) {
 		...result,
 	};
 
-	console.log(loadedBlog);
 	return loadedBlog;
 }
 
 export async function addBlog(blogData: BlogData) {
-	blogData.imageId = '3fa85f64-5717-4562-b3fc-2c963f66afa6';
-	console.log(blogData);
 	client
 		.post('/Blogs/Blog/UpdateBlog', blogData)
-		.then(function (response) {
-			console.log(response);
-		})
+		.then(function (response) {})
 		.catch(function (error) {
 			console.log(error);
 		});
@@ -63,9 +58,7 @@ export async function updateBlog(blogData: BlogData) {
 	blogData.imageId = '3fa85f64-5717-4562-b3fc-2c963f66afa6';
 	client
 		.post('/Blogs/Blog/UpdateBlog', blogData)
-		.then(function (response) {
-			console.log(response);
-		})
+		.then(function (response) {})
 		.catch(function (error) {
 			console.log(error);
 		});
@@ -74,22 +67,24 @@ export async function updateBlog(blogData: BlogData) {
 export async function deleteBlog(blogId: string) {
 	const blogURL = '/Blogs/Blog/DeleteBlog?blogId=';
 	const blogEntry: string = blogURL + blogId;
-
-	console.log(blogEntry);
-	const deleteBlog = await client.delete(blogEntry).then((response) => {
-		console.log(response);
-	});
-	console.log(deleteBlog);
+	const deleteBlog = await client.delete(blogEntry).then((response) => {});
 }
 
-export async function addImage(image: string, token: string) {
-	client
-		.post('/Blogs/Blog/UpdateBlogImage', { image, id: token }, headers)
-		.then(function (response) {})
-		.catch(function (error) {
-			console.log(error);
-		});
+export async function deleteBlogImage(blogImageId: string) {
+	const blogURL = '/Blogs/Blog/DeleteBlogImage?blogId=';
+	const blogImage: string = blogURL + blogImageId;
+	const deleteBlogImage = await client.delete(blogImage).then((response) => {});
 }
+
+export const addImage = async (image: string, token: string) => {
+	const response = await client.post('/Blogs/Blog/UpdateBlogImage', { image, id: token }, headers);
+	return response.data;
+};
+
+export const retrieveImage = async (ImageID: string) => {
+	const response = await client.get(`/Blogs/Blog/GetBlogImageData?blogImageId=${ImageID}`);
+	return response.data;
+};
 
 export async function postInquiry(
 	firstName: string,
