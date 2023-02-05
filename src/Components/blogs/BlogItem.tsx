@@ -52,7 +52,7 @@ const BlogItem = (props: Blog) => {
 					<div className={classes.tooltip}>
 						<span className={classes.tooltiptext}>Delete Post</span>
 
-						<button onClick={() => props.deletePosts(blogID, blogImageID)}>
+						<button onClick={() => props.deletePosts?.(blogID, blogImageID)}>
 							<i className={`${classes.editorButton} fa-sharp fa-solid fa-trash`}></i>
 						</button>
 					</div>

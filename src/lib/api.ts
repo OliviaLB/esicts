@@ -55,7 +55,6 @@ export async function addBlog(blogData: BlogData) {
 }
 
 export async function updateBlog(blogData: BlogData) {
-	blogData.imageId = '3fa85f64-5717-4562-b3fc-2c963f66afa6';
 	client
 		.post('/Blogs/Blog/UpdateBlog', blogData)
 		.then(function (response) {})
@@ -84,6 +83,15 @@ export const addImage = async (image: string, token: string) => {
 export const retrieveImage = async (ImageID: string) => {
 	const response = await client.get(`/Blogs/Blog/GetBlogImageData?blogImageId=${ImageID}`);
 	return response.data;
+};
+
+export const updateBlogImage = async (image: string, ImageID: string) => {
+	client
+		.post('/Blogs/Blog/UpdateBlogImage', { id: ImageID, image })
+		.then(function (response) {})
+		.catch(function (error) {
+			console.log(error);
+		});
 };
 
 export async function postInquiry(

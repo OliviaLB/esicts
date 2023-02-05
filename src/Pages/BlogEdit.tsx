@@ -47,6 +47,7 @@ const BlogDetail = () => {
 				imageId={loadedBlog.imageId}
 				html={loadedBlog.html}
 				description={loadedBlog.description}
+				id={loadedBlog.id}
 			/>
 		</div>
 	);
