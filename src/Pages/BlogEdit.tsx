@@ -10,7 +10,7 @@ interface ParamTypes {
 	blogId: string;
 }
 
-const BlogDetail = () => {
+const BlogEdit = () => {
 	const params = useParams<ParamTypes>();
 	const blogId = params.blogId;
 
@@ -53,4 +53,4 @@ const BlogDetail = () => {
 	);
 };
 
-export default BlogDetail;
+export default BlogEdit;

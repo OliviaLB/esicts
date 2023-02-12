@@ -1,5 +1,4 @@
 import axios, { AxiosRequestConfig } from 'axios';
-import swal from 'sweetalert';
 import { Blog, BlogData } from '../Components/blogs/Blog-Interfaces';
 
 const headers: AxiosRequestConfig = {
@@ -85,7 +84,7 @@ export const retrieveImage = async (ImageID: string) => {
 	return response.data;
 };
 
-export const updateBlogImage = async (image: string, ImageID: string) => {
+export const updateBlogImage = async (image: string | null, ImageID: string) => {
 	client
 		.post('/Blogs/Blog/UpdateBlogImage', { id: ImageID, image })
 		.then(function (response) {})

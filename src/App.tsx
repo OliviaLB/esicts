@@ -1,4 +1,4 @@
-import { Redirect, Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import './App.css';
 
 import About from './Pages/About';
@@ -21,40 +21,36 @@ function App() {
 				<Route
 					path="/"
 					exact
-				>
-					<Redirect to="/home" />
-				</Route>
-				<Route path="/home">
-					<Welcome />
-				</Route>
-				<Route path="/about">
-					<About />
-				</Route>
-				<Route path="/treatments">
-					<Treatments />
-				</Route>
-				<Route path="/contact">
-					<Contact />
-				</Route>
+					component={Welcome}
+				/>
 				<Route
-					path="/"
-					exact
-				>
-					<Redirect to="/blogs" />
-				</Route>
+					path="/about"
+					component={About}
+				/>
+				<Route
+					path="/treatments"
+					component={Treatments}
+				/>
+
+				<Route
+					path="/contact"
+					component={Contact}
+				/>
 				<Route
 					path="/blogs"
 					exact
-				>
-					<AllBlogs />
-				</Route>
-				<Route path="/blogs/:blogId">
-					<BlogDetail />
-				</Route>
+					component={AllBlogs}
+				/>
 
-				<Route path="/admin">
-					<Admin />
-				</Route>
+				<Route
+					path="/blogs/:blogId"
+					component={BlogDetail}
+				/>
+
+				<Route
+					path="/admin"
+					component={Admin}
+				/>
 
 				{getUserIsLoggedIn() && (
 					<>
@@ -67,7 +63,6 @@ function App() {
 						</Route>
 					</>
 				)}
-
 				<Route path="*">
 					<NotFound />
 				</Route>

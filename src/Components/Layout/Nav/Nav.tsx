@@ -39,7 +39,7 @@ const Nav = () => {
 				<ul className={`${contentClassname}`}>
 					<li>
 						<NavLink
-							to="/home"
+							to="/"
 							activeClassName={classes.active}
 						>
 							Home

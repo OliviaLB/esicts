@@ -28,7 +28,7 @@ const BlogEditor = (props: Blog) => {
 
 	const [selectedFile, setSelectedFile] = useState<File | null>(null);
 	const [image, setImage] = useState('');
-	const [encodedImage, setEncodedImage] = useState('');
+	const [encodedImage, setEncodedImage] = useState<string | null>(null);
 	const [clicked, setClicked] = useState(false);
 	const [originalImage, setOriginalImage] = useState('');
 
@@ -60,28 +60,9 @@ const BlogEditor = (props: Blog) => {
 		}
 	};
 
-	const handleFileInputClick = () => {
-		setClicked(true);
-	};
-
-	const setImageData = async () => {
-		if (clicked === true) {
-			return encodedImage;
-		} else {
-			const imageData = await retrieveImage(props.imageId);
-			setOriginalImage(imageData);
-			return originalImage;
-		}
-	};
-
-	setImageData();
-
 	const handlePostData = async () => {
-		const imageData = await setImageData();
-
 		try {
-			const imageGUID = await updateBlogImage(imageData, props.imageId);
-			console.log(imageData);
+			const imageGUID = await updateBlogImage(encodedImage, props.imageId);
 
 			const blogData: BlogData = {
 				id: blogId,
@@ -162,12 +143,13 @@ const BlogEditor = (props: Blog) => {
 					</div>
 
 					<div className={classes.control}>
-						<label htmlFor="image">Image Card</label>
+						<label htmlFor="image">
+							Update Card Image (Leave Blank if you wish to keep original image)
+						</label>
 						<input
 							type="file"
 							id="imageField"
 							onChange={handleFileChange}
-							onClick={handleFileInputClick}
 						/>
 					</div>
 

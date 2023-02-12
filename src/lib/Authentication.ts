@@ -1,8 +1,5 @@
 import axios, { AxiosRequestConfig } from 'axios';
-import { useHistory } from 'react-router-dom';
-import uuid from 'react-uuid';
 import swal from 'sweetalert';
-import { useState } from 'react';
 
 const headers: AxiosRequestConfig = {
 	headers: {
