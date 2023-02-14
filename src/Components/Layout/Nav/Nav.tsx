@@ -55,7 +55,7 @@ const Nav = () => {
 					</li>
 					<li>
 						<NavLink
-							to="/treatments"
+							to="/services"
 							activeClassName={classes.active}
 						>
 							Services

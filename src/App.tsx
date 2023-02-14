@@ -34,7 +34,7 @@ function App() {
 					component={About}
 				/>
 				<Route
-					path="/treatments"
+					path="/services"
 					component={Treatments}
 				/>
 
