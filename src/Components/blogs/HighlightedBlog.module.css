@@ -17,6 +17,13 @@
 	margin-bottom: 20px;
 }
 
+.blogContent img {
+	width: 40rem;
+	display: block;
+	margin: 0 auto;
+	padding: 0;
+}
+
 .returnLink {
 	display: flex;
 	align-self: start;

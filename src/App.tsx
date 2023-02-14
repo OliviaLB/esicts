@@ -1,4 +1,4 @@
-import { Route, Switch } from 'react-router-dom';
+import { Redirect, Route, Switch } from 'react-router-dom';
 import './App.css';
 
 import About from './Pages/About';
@@ -20,6 +20,12 @@ function App() {
 			<Switch>
 				<Route
 					path="/"
+					exact
+				>
+					<Redirect to="/home" />
+				</Route>
+				<Route
+					path="/home"
 					exact
 					component={Welcome}
 				/>

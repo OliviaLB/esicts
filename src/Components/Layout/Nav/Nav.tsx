@@ -14,7 +14,7 @@ const Nav = () => {
 		console.log('click');
 		Signout();
 		setNewState(!prevState);
-		history.push('/');
+		history.push('/home');
 	};
 
 	return (
@@ -39,7 +39,7 @@ const Nav = () => {
 				<ul className={`${contentClassname}`}>
 					<li>
 						<NavLink
-							to="/"
+							to="/home"
 							activeClassName={classes.active}
 						>
 							Home

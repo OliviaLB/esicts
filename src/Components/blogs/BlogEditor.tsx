@@ -16,7 +16,7 @@ interface ParamTypes {
 	blogId: string;
 }
 
-const BlogEditor = (props: Blog) => {
+const BlogEditor = (props: any) => {
 	const params = useParams<ParamTypes>();
 	const blogId = params.blogId;
 	const { quill, quillRef } = useQuill();
@@ -155,7 +155,7 @@ const BlogEditor = (props: Blog) => {
 
 					<div className={classes.editor}>
 						<div
-							dangerouslySetInnerHTML={{ __html: typeof props.html }}
+							dangerouslySetInnerHTML={{ __html: props.html }}
 							className={classes.texteditor}
 							ref={quillRef}
 							id="text"

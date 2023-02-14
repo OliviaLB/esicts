@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { BlogData } from './Blog-Interfaces';
 import classes from './HighlightedBlog.module.css';
 
-const HighlightedBlog = (props: BlogData) => {
+const HighlightedBlog = (props: any) => {
 	console.log(props.imageId);
 	return (
 		<div className={classes.blogWrapper}>
@@ -15,7 +15,7 @@ const HighlightedBlog = (props: BlogData) => {
 			</Link>
 			<div className={classes.blogContent}>
 				<h3>{props.title}</h3>
-				<div dangerouslySetInnerHTML={{ __html: typeof props.html }} />
+				<div dangerouslySetInnerHTML={{ __html: props.html }} />
 			</div>
 		</div>
 	);

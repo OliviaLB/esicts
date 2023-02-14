@@ -12,7 +12,7 @@ export interface Blog {
 export interface BlogData {
 	title?: string;
 	description?: string;
-	__html?: string | undefined;
+	// __html?: string | undefined;
 	html: string | undefined;
 	imageId: string;
 	id?: string;
