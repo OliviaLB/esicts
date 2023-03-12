@@ -70,7 +70,7 @@ const BlogEditor = (props: any) => {
 				title,
 			};
 
-			updateBlog(blogData);
+			await updateBlog(blogData);
 			swal({
 				title: 'Success',
 				text: 'Blog Updated',
@@ -80,7 +80,7 @@ const BlogEditor = (props: any) => {
 					ok: 'OK',
 				},
 			} as any);
-			history.push('/blogs');
+			await history.push('/home');
 		} catch (error) {
 			console.error(error);
 			if (error instanceof Error) {

@@ -12,7 +12,7 @@ const NewBlog = () => {
 
 	useEffect(() => {
 		if (status === 'completed') {
-			history.push('/blogs');
+			history.push('/home');
 		}
 	}, [status, history]);
 
