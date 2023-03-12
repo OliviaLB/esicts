@@ -14,6 +14,7 @@ const HighlightedBlog = (props: any) => {
 			</Link>
 			<div className={classes.blogContent}>
 				<h3>{props.title}</h3>
+				<h4>Description: {props.description}</h4>
 				<div dangerouslySetInnerHTML={{ __html: props.html }} />
 			</div>
 		</div>

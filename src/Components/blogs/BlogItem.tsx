@@ -37,6 +37,7 @@ const BlogItem = (props: Blog) => {
 			></img>
 
 			<div className={classes.card__body}>
+				{/* <h3 className={classes.blog__name}>{props.title}</h3> */}
 				<h3 className={classes.blog__name}>{props.title}</h3>
 				<p className={classes.blog__desc}>{shorten(`${props.description}`, 150)}</p>
 				<Link

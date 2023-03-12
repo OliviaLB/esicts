@@ -6,6 +6,8 @@ import 'quill/dist/quill.snow.css';
 import Card from '../UI/Card';
 import LoadingSpinner from '../UI/LoadingSpinner';
 import classes from './BlogForm.module.css';
+import style from './HighlightedBlog.module.css';
+
 import { addImage } from '../../lib/api';
 import swal from 'sweetalert';
 
@@ -15,14 +17,17 @@ const BlogForm = (props: any) => {
 	const [selectedFile, setSelectedFile] = useState<File | null>(null);
 	const [encodedImage, setEncodedImage] = useState('');
 	const [image, setImage] = useState('');
-	const [html, setHtml] = useState();
-	const [title, setTitle] = useState<string | undefined>();
-	const [description, setDescription] = useState<string | undefined>();
+	const [html, setHtml] = useState('');
+	const [title, setTitle] = useState<string>('');
+	const [charCount, setCharCount] = useState(32);
+	const [description, setDescription] = useState<string>('');
 
 	const [responseData, setResponseData] = useState(null);
 
 	const titleChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-		setTitle(event.target.value);
+		const newTitle = event.target.value;
+		setTitle(newTitle);
+		setCharCount(32 - newTitle.length);
 	};
 	const descriptionChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
 		setDescription(event.target.value);
@@ -117,6 +122,15 @@ const BlogForm = (props: any) => {
 				}
 			/>
 
+			<div className="wrappercol">
+				<h2>Preview</h2>
+				<div className={style.blogContent}>
+					<h3 dangerouslySetInnerHTML={{ __html: title }} />
+					<h4 dangerouslySetInnerHTML={{ __html: description }} />
+					<div dangerouslySetInnerHTML={{ __html: html }} />
+				</div>
+			</div>
+
 			<Card>
 				<form
 					onFocus={formFocusedHandler}
@@ -130,11 +144,12 @@ const BlogForm = (props: any) => {
 					)}
 
 					<div className={classes.control}>
-						<label htmlFor="title">Title</label>
+						<label htmlFor="title">Title - {charCount} characters left</label>
 						<input
 							type="text"
 							id="title"
 							onChange={titleChangeHandler}
+							maxLength={32}
 						/>
 					</div>
 
