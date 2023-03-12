@@ -2,12 +2,12 @@ import { Fragment, useState, useEffect } from 'react';
 import { Prompt } from 'react-router-dom';
 import { useQuill } from 'react-quilljs';
 import 'quill/dist/quill.snow.css';
-import { v4 as uuidv4 } from 'uuid';
 
 import Card from '../UI/Card';
 import LoadingSpinner from '../UI/LoadingSpinner';
 import classes from './BlogForm.module.css';
 import { addImage } from '../../lib/api';
+import swal from 'sweetalert';
 
 const BlogForm = (props: any) => {
 	const { quill, quillRef } = useQuill();
@@ -70,16 +70,36 @@ const BlogForm = (props: any) => {
 			const imageGUID = await addImage(encodedImage, token);
 			setResponseData(imageGUID);
 
-			const postBlog = await props.onAddBlog({
+			await props.onAddBlog({
 				id: token,
 				description,
 				html,
 				imageId: imageGUID,
 				title,
 			});
-			console.log(postBlog);
+			swal({
+				title: 'Success',
+				text: 'Blog Posted',
+				icon: 'success',
+				dangerMode: false,
+				buttons: {
+					ok: 'OK',
+				},
+			} as any);
 		} catch (error) {
 			console.error(error);
+			if (error instanceof Error) {
+				let message = error.message;
+				swal({
+					title: 'Something went wrong',
+					text: message,
+					icon: 'error',
+					dangerMode: true,
+					buttons: {
+						ok: 'OK',
+					},
+				} as any);
+			}
 		}
 	};
 

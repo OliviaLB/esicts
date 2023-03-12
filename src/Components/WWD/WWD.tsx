@@ -15,7 +15,7 @@ const WWD = () => {
 					<figure className={`${classes.snip1401} ${classes['flex-item']}`}>
 						<img
 							src={rximg}
-							alt="sample67"
+							alt="A person receiving treatment for their shoulder."
 						/>
 						<figcaption>
 							<h3>About Us</h3>
@@ -28,10 +28,10 @@ const WWD = () => {
 					<figure className={`${classes.snip1401} ${classes['flex-item']}`}>
 						<img
 							src={braceimg}
-							alt="sample93"
+							alt="A patient being guided on how to walk with crutches"
 						/>
 						<figcaption>
-							<h3>Conditions Treated</h3>
+							<h3>Our Services</h3>
 						</figcaption>
 						<i className="ion-ios-medkit-outline"></i>
 					</figure>
@@ -41,10 +41,10 @@ const WWD = () => {
 					<figure className={`${classes.snip1401} ${classes['flex-item']}`}>
 						<img
 							src={bandimg}
-							alt="sample87"
+							alt="A patient being taught how to perform an arm exercise with a band."
 						/>
 						<figcaption>
-							<h3>Patient Education</h3>
+							<h3>Education</h3>
 						</figcaption>
 						<i className="ion-ios-book-outline"></i>
 					</figure>

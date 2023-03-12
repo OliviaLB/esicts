@@ -1,6 +1,5 @@
 import { useRef, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import uuid from 'react-uuid';
 import { SignIn } from '../../lib/Authentication';
 import styles from './SigninForm.module.css';
 

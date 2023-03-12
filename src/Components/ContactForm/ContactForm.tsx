@@ -1,6 +1,7 @@
 import classes from './ContactForm.module.css';
 import useInput from '../../hooks/use-input';
 import { postInquiry } from '../../lib/api';
+import swal from 'sweetalert';
 
 const isNotEmpty = (value: string) => value.trim() !== '';
 const isEmail = (value: string) => value.includes('@');
@@ -57,16 +58,46 @@ const ContactForm = () => {
 		formIsValid = true;
 	}
 
-	function submitHandler(event: any) {
-		event.preventDefault();
-		postInquiry(firstName, lastName, mobile, email, message);
-
+	const resetfields = () => {
 		resetFirstName();
 		resetLastName();
 		resetEmail();
 		resetMobile();
 		resetMessage();
-	}
+	};
+
+	const submitHandler = async (event: React.FormEvent<HTMLFormElement>) => {
+		event.preventDefault();
+		try {
+			// Perform form submission logic here (e.g. API call)
+			await postInquiry(firstName, lastName, mobile, email, message);
+			swal({
+				title: 'Success',
+				text: 'Message Sent',
+				icon: 'success',
+				dangerMode: false,
+				buttons: {
+					ok: 'OK',
+				},
+			} as any);
+			// Clear input fields upon successful submission
+			await resetfields();
+		} catch (error) {
+			console.error(error);
+			if (error instanceof Error) {
+				let message = error.message;
+				swal({
+					title: 'Something went wrong',
+					text: message,
+					icon: 'error',
+					dangerMode: true,
+					buttons: {
+						ok: 'OK',
+					},
+				} as any);
+			}
+		}
+	};
 
 	return (
 		<div className="wrappercol">
@@ -116,7 +147,7 @@ const ContactForm = () => {
 				<div className={classes['form-control']}>
 					<div>
 						<label htmlFor="mobile">Mobile / Phone:</label>
-						{emailHasError && (
+						{mobileHasError && (
 							<p className={classes.errorText}>Please enter a valid phone number.</p>
 						)}
 						<input

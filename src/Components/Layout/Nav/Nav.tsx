@@ -11,7 +11,6 @@ const Nav = () => {
 	const history = useHistory();
 
 	const LogUserOut = (event: React.MouseEvent<HTMLElement>) => {
-		console.log('click');
 		Signout();
 		setNewState(!prevState);
 		history.push('/home');

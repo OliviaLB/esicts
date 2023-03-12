@@ -6,12 +6,14 @@ import BlogItem from './BlogItem';
 import classes from './BlogList.module.css';
 
 const sortBlogs = (blogs, ascending) => {
-	return blogs.sort((blogA, blogB) => {
-		if (ascending) {
-			return blogA.id > blogB.id ? 1 : -1;
-		} else {
-			return blogA.id < blogB.id ? 1 : -1;
+	return blogs.sort((a, b) => {
+		if (a.title < b.title) {
+			return ascending ? -1 : 1;
 		}
+		if (a.title > b.title) {
+			return ascending ? 1 : -1;
+		}
+		return 0;
 	});
 };
 
@@ -33,6 +35,18 @@ const BlogList = (props) => {
 		});
 	};
 
+	const alphabetSortingHandler = () => {
+		const newSortOrder = isSortingAscending ? 'desc' : 'asc';
+		const newSearch = `?sort=${newSortOrder}`;
+		history.push({
+			pathname: location.pathname,
+			search: newSearch,
+		});
+		queryParams.set('sort', newSortOrder);
+		location.search = queryParams.toString();
+		window.location.reload();
+	};
+
 	const deletePosts = async (blogID, blogImageID) => {
 		deleteBlogImage(blogImageID);
 		deleteBlog(blogID);
@@ -43,9 +57,7 @@ const BlogList = (props) => {
 	return (
 		<Fragment>
 			<div className={classes.sorting}>
-				<button onClick={changeSortingHandler}>
-					Sort {isSortingAscending ? 'Descending' : 'Ascending'}
-				</button>
+				<button onClick={changeSortingHandler}>Sort {isSortingAscending ? 'Z-A' : 'A-Z'}</button>
 			</div>
 			<div className="flexcontainer">
 				{sortedBlogs.map((blog) => (

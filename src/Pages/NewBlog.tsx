@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import { Blog, BlogData } from '../Components/blogs/Blog-Interfaces';
+import { BlogData } from '../Components/blogs/Blog-Interfaces';
 
 import BlogForm from '../Components/blogs/BlogForm';
 import useHttp from '../hooks/use-http';

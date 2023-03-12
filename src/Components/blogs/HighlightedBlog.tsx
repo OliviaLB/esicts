@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import { BlogData } from './Blog-Interfaces';
 import classes from './HighlightedBlog.module.css';
 
 const HighlightedBlog = (props: any) => {

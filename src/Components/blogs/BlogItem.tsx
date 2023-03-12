@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import classes from './BlogItem.module.css';
 import { Blog } from './Blog-Interfaces';
-import { useSelector } from 'react-redux';
 import { getUserIsLoggedIn } from '../../lib/Authentication';
 import { retrieveImage } from '../../lib/api';
 import { useState } from 'react';

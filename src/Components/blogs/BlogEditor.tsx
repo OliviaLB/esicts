@@ -9,8 +9,8 @@ import Card from '../UI/Card';
 import LoadingSpinner from '../UI/LoadingSpinner';
 import classes from './BlogForm.module.css';
 
-import { retrieveImage, updateBlog, updateBlogImage } from '../../lib/api';
-import { Blog, BlogData } from './Blog-Interfaces';
+import { updateBlog, updateBlogImage } from '../../lib/api';
+import { BlogData } from './Blog-Interfaces';
 
 interface ParamTypes {
 	blogId: string;
@@ -29,8 +29,6 @@ const BlogEditor = (props: any) => {
 	const [selectedFile, setSelectedFile] = useState<File | null>(null);
 	const [image, setImage] = useState('');
 	const [encodedImage, setEncodedImage] = useState<string | null>(null);
-	const [clicked, setClicked] = useState(false);
-	const [originalImage, setOriginalImage] = useState('');
 
 	let history = useHistory();
 
@@ -62,7 +60,7 @@ const BlogEditor = (props: any) => {
 
 	const handlePostData = async () => {
 		try {
-			const imageGUID = await updateBlogImage(encodedImage, props.imageId);
+			await updateBlogImage(encodedImage, props.imageId);
 
 			const blogData: BlogData = {
 				id: blogId,
@@ -73,10 +71,30 @@ const BlogEditor = (props: any) => {
 			};
 
 			updateBlog(blogData);
-			swal('Blog updated!', 'Submission Success', 'success');
+			swal({
+				title: 'Success',
+				text: 'Blog Updated',
+				icon: 'success',
+				dangerMode: false,
+				buttons: {
+					ok: 'OK',
+				},
+			} as any);
 			history.push('/blogs');
 		} catch (error) {
-			swal('Oops', 'Something went wrong', 'Error');
+			console.error(error);
+			if (error instanceof Error) {
+				let message = error.message;
+				swal({
+					title: 'Something went wrong',
+					text: message,
+					icon: 'error',
+					dangerMode: true,
+					buttons: {
+						ok: 'OK',
+					},
+				} as any);
+			}
 		}
 	};
 

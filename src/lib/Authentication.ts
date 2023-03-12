@@ -8,32 +8,19 @@ const headers: AxiosRequestConfig = {
 	responseType: 'json',
 };
 
-const getApiBaseAddress = (): string => {
-	let result = window.location.origin;
-
-	if (result.includes('localhost')) {
-		result = 'http://www.ultimatesoftwaresolutions.com'; // http://localhost:3000/
-	}
-
-	return result; // + '/api/';
-};
-
 const client = axios.create({
-	baseURL: getApiBaseAddress(),
+	baseURL: 'https://emstuart.shieldtherapy.com/',
 	headers: { Accept: 'application/json' },
 });
 
 export async function SignIn(userName: string, password: string) {
 	try {
-		const result = await client.post(
-			`/Blogs/Blog/Login?userName=${userName}`,
-			`"${password}"`,
-			headers
-		);
+		const result = await client.post(`/Blog/Login?userName=${userName}`, `"${password}"`, headers);
 		localStorage.setItem('token', result.data);
 		window.location.reload();
 	} catch (error: any) {
-		alert(error);
+		alert(error.message);
+
 		// Error
 		if (!window.navigator.onLine) {
 			swal(
@@ -62,11 +49,9 @@ export const getUserIsLoggedIn = (): boolean => {
 
 	if (token) {
 		// Token is present, so authentication is successful
-		console.log('Authentication successful!');
 		return true;
 	} else {
 		// Token is not present, so authentication failed
-		console.log('Authentication failed!');
 		return false;
 	}
 };
