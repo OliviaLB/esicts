@@ -1,11 +1,12 @@
 import { Fragment, useState } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import { deleteBlog, deleteBlogImage } from '../../lib/api';
+import { Blog } from './Blog-Interfaces';
 
 import BlogItem from './BlogItem';
 import classes from './BlogList.module.css';
 
-const sortBlogs = (blogs, ascending) => {
+const sortBlogs = (blogs: Blog[], ascending: boolean): Blog[] => {
 	return blogs.sort((a, b) => {
 		if (a.title < b.title) {
 			return ascending ? -1 : 1;
@@ -17,16 +18,16 @@ const sortBlogs = (blogs, ascending) => {
 	});
 };
 
-const BlogList = (props) => {
+const BlogList: React.FC<{ blogs: Blog[] }> = ({ blogs }) => {
 	const history = useHistory();
 	const location = useLocation();
-	const [blogs, setBlogs] = useState(props.blogs);
+	const [sortedBlogs, setSortedBlogs] = useState<Blog[]>(blogs);
 
 	const queryParams = new URLSearchParams(location.search);
 
 	const isSortingAscending = queryParams.get('sort') === 'asc';
 
-	const sortedBlogs = sortBlogs(blogs, isSortingAscending);
+	const newSortedBlogs = sortBlogs(sortedBlogs, isSortingAscending);
 
 	const changeSortingHandler = () => {
 		history.push({
@@ -35,23 +36,11 @@ const BlogList = (props) => {
 		});
 	};
 
-	const alphabetSortingHandler = () => {
-		const newSortOrder = isSortingAscending ? 'desc' : 'asc';
-		const newSearch = `?sort=${newSortOrder}`;
-		history.push({
-			pathname: location.pathname,
-			search: newSearch,
-		});
-		queryParams.set('sort', newSortOrder);
-		location.search = queryParams.toString();
-		window.location.reload();
-	};
-
-	const deletePosts = async (blogID, blogImageID) => {
-		deleteBlogImage(blogImageID);
-		deleteBlog(blogID);
-		const result = sortedBlogs.filter((sortedBlog) => sortedBlog.id !== blogID);
-		setBlogs(result);
+	const deletePosts = async (blogID: string, blogImageID: string) => {
+		await deleteBlogImage(blogImageID);
+		await deleteBlog(blogID);
+		const result = newSortedBlogs.filter((sortedBlog) => sortedBlog.id !== blogID);
+		setSortedBlogs(result);
 	};
 
 	return (
@@ -60,7 +49,7 @@ const BlogList = (props) => {
 				<button onClick={changeSortingHandler}>Sort {isSortingAscending ? 'Z-A' : 'A-Z'}</button>
 			</div>
 			<div className="flexcontainer">
-				{sortedBlogs.map((blog) => (
+				{newSortedBlogs.map((blog) => (
 					<BlogItem
 						key={blog.id}
 						id={blog.id}
