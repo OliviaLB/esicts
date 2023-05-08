@@ -23,6 +23,7 @@ const BlogForm = (props: any) => {
 	const [description, setDescription] = useState<string>('');
 
 	const [responseData, setResponseData] = useState(null);
+	const current = new Date();
 
 	const titleChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
 		const newTitle = event.target.value;
@@ -81,6 +82,8 @@ const BlogForm = (props: any) => {
 				html,
 				imageId: imageGUID,
 				title,
+				createdDate: current,
+				updatedDate: current
 			});
 			swal({
 				title: 'Success',

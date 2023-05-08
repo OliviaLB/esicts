@@ -13,6 +13,7 @@ interface ParamTypes {
 const BlogEdit = () => {
 	const params = useParams<ParamTypes>();
 	const blogId = params.blogId;
+	const current = new Date();
 
 	const { sendRequest, status, data: loadedBlog, error } = useHttp(getSingleBlog, true);
 
@@ -48,6 +49,8 @@ const BlogEdit = () => {
 				html={loadedBlog.html}
 				description={loadedBlog.description}
 				id={loadedBlog.id}
+				createdDate={loadedBlog.createdDate}
+				updatedDate={current}
 			/>
 		</div>
 	);

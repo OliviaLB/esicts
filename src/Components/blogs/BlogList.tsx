@@ -6,13 +6,24 @@ import { Blog } from './Blog-Interfaces';
 import BlogItem from './BlogItem';
 import classes from './BlogList.module.css';
 
-const sortBlogs = (blogs: Blog[], ascending: boolean): Blog[] => {
+const sortBlogs = (blogs: Blog[], key: string, ascending: boolean): Blog[] => {
 	return blogs.sort((a, b) => {
-		if (a.title < b.title) {
-			return ascending ? -1 : 1;
-		}
-		if (a.title > b.title) {
-			return ascending ? 1 : -1;
+		if (key === 'title') {
+			if (a.title < b.title) {
+				return ascending ? -1 : 1;
+			}
+			if (a.title > b.title) {
+				return ascending ? 1 : -1;
+			}
+		} else if (key === 'createdDate') {
+			if (a.createdDate && b.createdDate) {
+				if (a.createdDate < b.createdDate) {
+					return ascending ? -1 : 1;
+				}
+				if (a.createdDate > b.createdDate) {
+					return ascending ? 1 : -1;
+				}
+			}
 		}
 		return 0;
 	});
@@ -25,14 +36,16 @@ const BlogList: React.FC<{ blogs: Blog[] }> = ({ blogs }) => {
 
 	const queryParams = new URLSearchParams(location.search);
 
-	const isSortingAscending = queryParams.get('sort') === 'asc';
+	const sortKey = queryParams.get('sort') || 'title';
+	const isSortingAscending = queryParams.get('order') === 'asc';
 
-	const newSortedBlogs = sortBlogs(sortedBlogs, isSortingAscending);
+	const newSortedBlogs = sortBlogs(sortedBlogs, sortKey, isSortingAscending);
 
-	const changeSortingHandler = () => {
+	const changeSortingHandler = (key: string) => {
+		const order = sortKey === key && isSortingAscending ? 'desc' : 'asc';
 		history.push({
 			pathname: location.pathname,
-			search: `?sort=${isSortingAscending ? 'desc' : 'asc'}`,
+			search: `?sort=${key}&order=${order}`,
 		});
 	};
 
@@ -46,7 +59,13 @@ const BlogList: React.FC<{ blogs: Blog[] }> = ({ blogs }) => {
 	return (
 		<Fragment>
 			<div className={classes.sorting}>
-				<button onClick={changeSortingHandler}>Sort {isSortingAscending ? 'Z-A' : 'A-Z'}</button>
+				<button onClick={() => changeSortingHandler('title')}>
+					Sort by {sortKey === 'title' ? (isSortingAscending ? 'Z-A' : 'A-Z') : 'Title'}
+				</button>
+				<button onClick={() => changeSortingHandler('createdDate')}>
+					Sort by{' '}
+					{sortKey === 'createdDate' ? (isSortingAscending ? 'Show Newest First' : 'Show Oldest First') : 'Created Date'}
+				</button>
 			</div>
 			<div className="flexcontainer">
 				{newSortedBlogs.map((blog) => (
@@ -58,6 +77,7 @@ const BlogList: React.FC<{ blogs: Blog[] }> = ({ blogs }) => {
 						imageId={blog.imageId}
 						html={blog.html}
 						deletePosts={deletePosts}
+						createdDate={blog.createdDate}
 					/>
 				))}
 			</div>

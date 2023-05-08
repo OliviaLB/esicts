@@ -1,6 +1,6 @@
 import axios, { AxiosRequestConfig } from 'axios';
 import swal from 'sweetalert';
-import { Blog, BlogData } from '../Components/blogs/Blog-Interfaces';
+import { Blog } from '../Components/blogs/Blog-Interfaces';
 
 const headers: AxiosRequestConfig = {
 	headers: {
@@ -16,37 +16,35 @@ const client = axios.create({
 });
 
 export async function getAllBlogs() {
-	const Blogs: any = await client.get('/Blog/getBlogs');
+	const Blogs = await client.get('/Blog/getBlogs');
 	const transformedBlogs: [] = Blogs.data;
 	return transformedBlogs;
 }
 
 export async function getSingleBlog(blogId: string) {
-	const Blogs: Blog[] = await getAllBlogs();
-	const result = Blogs.find((blog) => {
-		return blog.id === blogId;
-	});
+	const response = await client.get(`/Blog/GetBlog?blogId=${blogId}`);
 
 	const loadedBlog = {
-		id: blogId,
-		...result,
+		...response.data
 	};
 
 	return loadedBlog;
 }
 
-export async function addBlog(blogData: BlogData) {
+export async function addBlog(Blog: Blog) {
 	client
-		.post('/Blog/UpdateBlog', blogData)
-		.then(function (response) {})
+		.post('/Blog/UpdateBlog', Blog)
+		.then(function (response) {
+			swal('Success!', 'Blog successfully added', 'success');
+		})
 		.catch(function (error) {
-			console.log(error);
+			swal('Oops!', error.message, 'error');
 		});
 }
 
-export async function updateBlog(blogData: BlogData) {
+export async function updateBlog(Blog: Blog) {
 	client
-		.post('/Blog/UpdateBlog', blogData)
+		.post('/Blog/UpdateBlog', Blog)
 		.then(function (response) {})
 		.catch(function (error) {
 			console.log(error);
@@ -76,12 +74,15 @@ export const retrieveImage = async (ImageID: string) => {
 };
 
 export const updateBlogImage = async (image: string | null, ImageID: string) => {
-	client
-		.post('/Blog/UpdateBlogImage', { id: ImageID, image })
-		.then(function (response) {})
-		.catch(function (error) {
-			console.log(error);
-		});
+	try {
+		const payload = {
+			id: ImageID,
+			...(image && { image }),
+		};
+		await client.post('/Blog/UpdateBlogImage', payload);
+	} catch (error: any) {
+		swal('Oops!', error.message, 'error');
+	}
 };
 
 export async function postInquiry(

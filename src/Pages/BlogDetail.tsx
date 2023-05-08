@@ -47,6 +47,8 @@ const BlogDetail = () => {
 			imageId={loadedBlog.imageId}
 			html={loadedBlog.html}
 			description={loadedBlog.description}
+			updatedDate={loadedBlog.updatedDate}
+			createdDate={loadedBlog.createdDate}
 		/>
 	);
 };

@@ -1,19 +1,12 @@
 export interface Blog {
-	id: string;
+	id?: string;
 	title: string;
 	description: string;
 	imageId: string;
-	html?: string | undefined;
+	html?: string;
+	createdDate?: Date;
+	updatedDate?: Date;
 	deletePosts?(id: string, blogImageId: string): void;
 	onAddBlog?({}): void;
 	isLoading?(): any;
-}
-
-export interface BlogData {
-	title?: string;
-	description?: string;
-	// __html?: string | undefined;
-	html: string | undefined;
-	imageId: string;
-	id?: string;
 }

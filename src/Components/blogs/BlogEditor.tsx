@@ -9,34 +9,37 @@ import Card from '../UI/Card';
 import LoadingSpinner from '../UI/LoadingSpinner';
 import classes from './BlogForm.module.css';
 
-import { updateBlog, updateBlogImage } from '../../lib/api';
-import { BlogData } from './Blog-Interfaces';
+import { retrieveImage, updateBlog, updateBlogImage } from '../../lib/api';
+import { Blog } from './Blog-Interfaces';
 
 interface ParamTypes {
 	blogId: string;
 }
 
-const BlogEditor = (props: any) => {
+const BlogEditor = (props: Blog) => {
 	const params = useParams<ParamTypes>();
 	const blogId = params.blogId;
 	const { quill, quillRef } = useQuill();
 	const [isEntering, setIsEntering] = useState(false);
-	const [imageId, setImageId] = useState(props.imageId);
-	const [html, setHtml] = useState(props.html);
-	const [title, setTitle] = useState(props.title);
-	const [description, setDescription] = useState(props.description);
+	const [imageId] = useState(props.imageId);
+	const [htmlContent, setHtmlContent] = useState(props.html);
+	const [titleContent, setTitleContent] = useState(props.title);
+	const [descriptionContent, setDescriptionContent] = useState(props.description);
 
 	const [selectedFile, setSelectedFile] = useState<File | null>(null);
 	const [image, setImage] = useState('');
 	const [encodedImage, setEncodedImage] = useState<string | null>(null);
+	const currentDate = new Date();
+	const date = new Date('2021-05-31');
 
 	let history = useHistory();
 
-	const titleChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-		setTitle(event.target.value);
+	const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+		setTitleContent(event.target.value);
 	};
-	const descriptionChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-		setDescription(event.target.value);
+
+	const handleDescriptionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+		setDescriptionContent(event.target.value);
 	};
 
 	const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -62,15 +65,17 @@ const BlogEditor = (props: any) => {
 		try {
 			await updateBlogImage(encodedImage, props.imageId);
 
-			const blogData: BlogData = {
+			const blog: Blog = {
 				id: blogId,
-				description,
-				html,
+				description: descriptionContent,
+				html: htmlContent,
 				imageId,
-				title,
+				title: titleContent,
+				createdDate: date,
+				updatedDate: currentDate,
 			};
 
-			await updateBlog(blogData);
+			await updateBlog(blog);
 			swal({
 				title: 'Success',
 				text: 'Blog Updated',
@@ -82,7 +87,6 @@ const BlogEditor = (props: any) => {
 			} as any);
 			await history.push('/home');
 		} catch (error) {
-			console.error(error);
 			if (error instanceof Error) {
 				let message = error.message;
 				swal({
@@ -98,19 +102,25 @@ const BlogEditor = (props: any) => {
 		}
 	};
 
-	function submitFormHandler(event: React.SyntheticEvent) {
+	function handleSubmit(event: React.SyntheticEvent) {
 		event.preventDefault();
 		handlePostData();
 	}
 
 	useEffect(() => {
-		if (quill) {
-			quill.on('text-change', () => {
-				// Get innerHTML using quill
-				setHtml(quill.root.innerHTML);
-			});
-		}
-	}, [quill]);
+		const fetchData = async () => {
+			if (quill) {
+				quill.on('text-change', () => {
+					// Get innerHTML using quill
+					setHtmlContent(quill.root.innerHTML);
+				});
+			}
+			const imageData = await retrieveImage(props.imageId);
+			setEncodedImage(imageData);
+		};
+
+		fetchData();
+	}, [quill, props.imageId]);
 
 	const finishEnteringHandler = () => {
 		setIsEntering(false);
@@ -132,7 +142,7 @@ const BlogEditor = (props: any) => {
 				<form
 					onFocus={formFocusedHandler}
 					className={classes.form}
-					onSubmit={submitFormHandler}
+					onSubmit={handleSubmit}
 				>
 					{props.isLoading?.() && (
 						<div className={classes.loading}>
@@ -145,8 +155,8 @@ const BlogEditor = (props: any) => {
 						<input
 							type="text"
 							id="title"
-							onChange={titleChangeHandler}
-							value={title}
+							onChange={handleTitleChange}
+							value={titleContent}
 						/>
 					</div>
 
@@ -155,8 +165,8 @@ const BlogEditor = (props: any) => {
 						<input
 							type="text"
 							id="description"
-							onChange={descriptionChangeHandler}
-							value={description}
+							onChange={handleDescriptionChange}
+							value={descriptionContent}
 						/>
 					</div>
 
@@ -173,7 +183,7 @@ const BlogEditor = (props: any) => {
 
 					<div className={classes.editor}>
 						<div
-							dangerouslySetInnerHTML={{ __html: props.html }}
+							dangerouslySetInnerHTML={{ __html: props.html !== undefined ? props.html : '' }}
 							className={classes.texteditor}
 							ref={quillRef}
 							id="text"

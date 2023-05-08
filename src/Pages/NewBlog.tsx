@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import { BlogData } from '../Components/blogs/Blog-Interfaces';
+import { Blog } from '../Components/blogs/Blog-Interfaces';
 
 import BlogForm from '../Components/blogs/BlogForm';
 import useHttp from '../hooks/use-http';
@@ -16,8 +16,8 @@ const NewBlog = () => {
 		}
 	}, [status, history]);
 
-	const addBlogHandler = (blogData: BlogData) => {
-		sendRequest(blogData);
+	const addBlogHandler = (Blog: Blog) => {
+		sendRequest(Blog);
 	};
 
 	return (
