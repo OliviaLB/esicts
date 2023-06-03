@@ -63,8 +63,8 @@ const BlogList: React.FC<{ blogs: Blog[] }> = ({ blogs }) => {
 					Sort by {sortKey === 'title' ? (isSortingAscending ? 'Z-A' : 'A-Z') : 'Title'}
 				</button>
 				<button onClick={() => changeSortingHandler('createdDate')}>
-					Sort by{' '}
-					{sortKey === 'createdDate' ? (isSortingAscending ? 'Show Newest First' : 'Show Oldest First') : 'Created Date'}
+					
+					{sortKey === 'createdDate' ? (isSortingAscending ? 'Show Oldest First' : 'Show Newset First') : 'Created Date'}
 				</button>
 			</div>
 			<div className="flexcontainer">
