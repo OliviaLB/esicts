@@ -19,6 +19,7 @@ const SigninForm = () => {
 	const onChangePassword = (event: React.FormEvent<HTMLInputElement>) => {
 		setPassword(event.currentTarget.value);
 	};
+
 	const history = useHistory();
 
 	const onFormSubmit = () => {
@@ -34,6 +35,13 @@ const SigninForm = () => {
 		}
 	};
 
+	const onBlur = () => {
+		// Check if the form is ready for submission
+		if (canSubmit()) {
+			onFormSubmit();
+		}
+	};
+
 	const onKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
 		if (event.key === 'Enter') {
 			onFormSubmit();
@@ -41,7 +49,9 @@ const SigninForm = () => {
 		}
 	};
 
-	const canSubmit = userName && password && !loggingIn;
+	const canSubmit = () => {
+		return userName && password && !loggingIn;
+	};
 
 	return (
 		<>
@@ -49,23 +59,22 @@ const SigninForm = () => {
 			<form className={styles.flexForm}>
 				<div className={styles.formGroup}>
 					<span className={'fa fa-user'}></span>
-
 					<input
 						autoFocus
 						type="text"
 						id="username"
 						className={styles.textInput}
-						autoComplete="email"
 						placeholder="Email address/Username"
 						aria-label="Email address/Username"
 						value={userName}
 						onChange={onChangeUserName}
+						onBlur={onBlur} // Added onBlur event handler
 						onKeyDown={onKeyDown}
+						autoComplete="username"
 					/>
 				</div>
 				<div className={styles.formGroup}>
 					<span className={'fa fa-lock'}></span>
-
 					<input
 						type="password"
 						id="password"
@@ -75,6 +84,7 @@ const SigninForm = () => {
 						aria-label="Password"
 						value={password}
 						onChange={onChangePassword}
+						onBlur={onBlur} // Added onBlur event handler
 						onKeyDown={onKeyDown}
 						ref={passwordRef}
 					/>
