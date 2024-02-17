@@ -14,15 +14,11 @@ import swal from 'sweetalert';
 const BlogForm = (props: any) => {
 	const { quill, quillRef } = useQuill();
 	const [isEntering, setIsEntering] = useState(false);
-	const [selectedFile, setSelectedFile] = useState<File | null>(null);
 	const [encodedImage, setEncodedImage] = useState('');
-	const [image, setImage] = useState('');
 	const [html, setHtml] = useState('');
 	const [title, setTitle] = useState<string>('');
 	const [charCount, setCharCount] = useState(32);
 	const [description, setDescription] = useState<string>('');
-
-	const [responseData, setResponseData] = useState(null);
 	const current = new Date();
 
 	const titleChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -37,16 +33,12 @@ const BlogForm = (props: any) => {
 	const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		const file = event.target.files && event.target.files[0];
 		if (file) {
-			setSelectedFile(file);
 			const reader = new FileReader();
 			reader.readAsDataURL(file);
 			reader.onload = () => {
 				if (reader.result) {
-					setImage(reader.result.toString());
 					const encodedImage = reader.result.toString();
 					const base64result = encodedImage.split(',')[1];
-					const attribute = encodedImage.split(',')[0];
-					setImage(attribute);
 					setEncodedImage(base64result);
 				}
 			};
@@ -56,7 +48,6 @@ const BlogForm = (props: any) => {
 	useEffect(() => {
 		if (quill) {
 			quill.on('text-change', () => {
-				// Get innerHTML using quill
 				setHtml(quill.root.innerHTML);
 			});
 		}
@@ -74,7 +65,6 @@ const BlogForm = (props: any) => {
 		try {
 			const token = '00000000-0000-0000-0000-000000000000';
 			const imageGUID = await addImage(encodedImage, token);
-			setResponseData(imageGUID);
 
 			await props.onAddBlog({
 				id: token,

@@ -30,7 +30,6 @@ const BlogEditor = (props: Blog) => {
 	const [image, setImage] = useState('');
 	const [encodedImage, setEncodedImage] = useState<string | null>(null);
 	const currentDate = new Date();
-	const date = new Date('2021-05-31');
 
 	let history = useHistory();
 
@@ -71,7 +70,7 @@ const BlogEditor = (props: Blog) => {
 				html: htmlContent,
 				imageId,
 				title: titleContent,
-				createdDate: date,
+				createdDate: props.createdDate,
 				updatedDate: currentDate,
 			};
 

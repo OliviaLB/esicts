@@ -2,7 +2,7 @@ import acupuncture from '../../Assets/Images/Acupuncture.jpeg';
 import massage from '../../Assets/Images/Massage.jpeg';
 import kt from '../../Assets/Images/KT2.jpeg';
 import stones from '../../Assets/Images/Stones.jpeg';
-import ax from '../../Assets/Images/Ax.jpeg';
+import back from '../../Assets/Images/Back.jpeg';
 import cupping from '../../Assets/Images/Cupping.jpeg';
 import classes from './Treatment.module.css';
 
@@ -14,7 +14,7 @@ const Treatment = () => {
 				<div className={`${classes.service} flex1x4`}>
 					<div className={classes.service__header}>
 						<img
-							src={ax}
+							src={back}
 							className={classes.service__image__left}
 							alt="A person on their side having their shoulder examined by a practitioner."
 						/>

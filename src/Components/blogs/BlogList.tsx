@@ -1,4 +1,4 @@
-import { Fragment, useState } from 'react';
+import { Fragment, useState, useEffect } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import { deleteBlog, deleteBlogImage } from '../../lib/api';
 import { Blog } from './Blog-Interfaces';
@@ -17,10 +17,12 @@ const sortBlogs = (blogs: Blog[], key: string, ascending: boolean): Blog[] => {
 			}
 		} else if (key === 'createdDate') {
 			if (a.createdDate && b.createdDate) {
-				if (a.createdDate < b.createdDate) {
+				if (a.createdDate > b.createdDate) {
+					// Compare in reverse order for descending sort
 					return ascending ? -1 : 1;
 				}
-				if (a.createdDate > b.createdDate) {
+				if (a.createdDate < b.createdDate) {
+					// Compare in reverse order for descending sort
 					return ascending ? 1 : -1;
 				}
 			}
@@ -56,6 +58,11 @@ const BlogList: React.FC<{ blogs: Blog[] }> = ({ blogs }) => {
 		setSortedBlogs(result);
 	};
 
+	useEffect(() => {
+		const sortedByDate = sortBlogs(blogs, 'createdDate', false); // Sort by createdDate in descending order
+		setSortedBlogs(sortedByDate);
+	}, [blogs]);
+
 	return (
 		<Fragment>
 			<div className={classes.sorting}>
@@ -63,8 +70,11 @@ const BlogList: React.FC<{ blogs: Blog[] }> = ({ blogs }) => {
 					Sort by {sortKey === 'title' ? (isSortingAscending ? 'Z-A' : 'A-Z') : 'Title'}
 				</button>
 				<button onClick={() => changeSortingHandler('createdDate')}>
-					
-					{sortKey === 'createdDate' ? (isSortingAscending ? 'Show Oldest First' : 'Show Newset First') : 'Created Date'}
+					{sortKey === 'createdDate'
+						? isSortingAscending
+							? 'Show Oldest First'
+							: 'Show Newest First'
+						: 'Created Date'}
 				</button>
 			</div>
 			<div className="flexcontainer">
