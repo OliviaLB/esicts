@@ -64,19 +64,19 @@ export const appTheme = createTheme({
 
 	typography: {
 		h1: {
-			fontSize: '1.5rem',
+			fontSize: '3rem',
 			fontWeight: '500',
-			color: '#000',
+			color: '#fff',
 			lineHeight: 1.2,
 			fontFamily: "'Nunito', sans-serif",
 			letterSpacing: '1px',
 		},
 		h2: {
-			fontSize: '1.25rem',
-			fontWeight: '500',
-			color: '#000',
+			fontSize: '1.2rem',
+			color: '#fff',
 			lineHeight: 1.2,
 			fontFamily: "'Nunito', sans-serif",
+			textTransform: 'capitalize'
 		},
 		body1: {
 			fontSize: '1rem',

@@ -1,10 +1,9 @@
-import { Fragment } from 'react';
 import Testimonial from '../Components/Testimonial/Testimonial';
 import WWD from '../Components/WWD/WWD';
 
 const Welcome = () => {
 	return (
-		<Fragment>
+		<>
 			<div className="block">
 				<WWD />
 			</div>
@@ -88,7 +87,7 @@ const Welcome = () => {
 				{' '}
 				<Testimonial />
 			</div>
-		</Fragment>
+		</>
 	);
 };
 

@@ -4,7 +4,7 @@ import { getUserIsLoggedIn, Signout } from '../../../lib/Authentication';
 import { AppBar, Toolbar, Button, Box, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
 
-interface Navigation {
+export interface Navigation {
 	pageName: string;
 	url: string;
 }

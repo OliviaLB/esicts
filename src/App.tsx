@@ -11,7 +11,7 @@ import CommonLayout from './Components/Layout/Layout';
 import Contact from './Pages/Contact';
 import NewBlog from './Pages/NewBlog';
 import Treatments from './Pages/Treatments';
-import Welcome from './Pages/Home';
+import Welcome from './Pages/Welcome';
 
 function App() {
 	return (
