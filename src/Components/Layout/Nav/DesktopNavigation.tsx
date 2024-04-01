@@ -47,7 +47,12 @@ const DesktopNavigation = () => {
 							key={index}
 							variant="contained"
 							color="secondary"
-							sx={{ width: '8rem', backgroundColor: !isActive(page.url) ? '#25aaf7' : '#0c337a' }}
+							sx={{
+								width: '8rem',
+								backgroundColor: !isActive(page.url) ? '#25aaf7' : '#fff',
+								color: !isActive(page.url) ? '#fff' : '#25aaf7',
+								border: isActive(page.url) ? '2px solid #25aaf7' : '2px solid #fff',
+							}}
 							component={Link}
 							to={page.url}
 						>
@@ -59,7 +64,12 @@ const DesktopNavigation = () => {
 						<Button
 							variant="contained"
 							color="secondary"
-							sx={{ width: '8rem' }}
+							sx={{
+								width: '8rem',
+								backgroundColor: !isActive("/admin") ? '#25aaf7' : '#fff',
+								color: !isActive("/admin") ? '#fff' : '#25aaf7',
+								border: isActive("/admin") ? '2px solid #25aaf7' : '2px solid #fff',
+							}}
 							component={Link}
 							to={'/admin'}
 						>
@@ -71,7 +81,12 @@ const DesktopNavigation = () => {
 							<Button
 								variant="contained"
 								color="secondary"
-								sx={{ width: '8rem' }}
+								sx={{
+									width: '8rem',
+									backgroundColor: !isActive('/new-blog') ? '#25aaf7' : '#fff',
+									color: !isActive('/new-blog') ? '#fff' : '#25aaf7',
+									border: isActive('/new-blog') ? '2px solid #25aaf7' : '2px solid #fff',
+								}}
 								component={Link}
 								to={'/new-blog'}
 							>
@@ -81,7 +96,12 @@ const DesktopNavigation = () => {
 							<Button
 								variant="contained"
 								color="secondary"
-								sx={{ width: '8rem' }}
+								sx={{
+									width: '8rem',
+									backgroundColor: '#25aaf7',
+									color: '#fff',
+									border: '2px solid #fff',
+								}}
 								onClick={LogUserOut}
 							>
 								Sign Out
