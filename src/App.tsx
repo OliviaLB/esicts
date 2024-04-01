@@ -1,79 +1,78 @@
-import { Redirect, Route, Switch } from 'react-router-dom';
 import './App.css';
-
-import About from './Pages/About';
-import Welcome from './Pages/Home';
-import Treatments from './Pages/Treatments';
-import Contact from './Pages/Contact';
-import Layout from './Components/Layout/Layout';
-import AllBlogs from './Pages/AllBlogs';
-import BlogEdit from './Pages/BlogEdit';
-import BlogDetail from './Pages/BlogDetail';
-import NewBlog from './Pages/NewBlog';
-import NotFound from './Pages/NotFound';
-import Admin from './Pages/Admin';
+import { appTheme } from './Theme/Theme';
 import { getUserIsLoggedIn } from './lib/Authentication';
+import { Navigate, Route, Routes } from 'react-router-dom';
+import { ThemeProvider } from '@mui/material';
+import About from './Pages/About';
+import AllBlogs from './Pages/AllBlogs';
+import BlogDetail from './Pages/BlogDetail';
+import BlogEdit from './Pages/BlogEdit';
+import CommonLayout from './Components/Layout/Layout';
+import Contact from './Pages/Contact';
+import NewBlog from './Pages/NewBlog';
+import Treatments from './Pages/Treatments';
+import Welcome from './Pages/Home';
 
 function App() {
 	return (
-		<Layout>
-			<Switch>
+		<ThemeProvider theme={appTheme}>
+			<Routes>
 				<Route
 					path="/"
-					exact
-				>
-					<Redirect to="/home" />
-				</Route>
+					element={
+						<Navigate
+							to="/home"
+							replace
+						/>
+					}
+				/>
+				<Route
+					path="*"
+					element={
+						<Navigate
+							to="/home"
+							replace
+						/>
+					}
+				/>
 				<Route
 					path="/home"
-					exact
-					component={Welcome}
+					element={<CommonLayout component={<Welcome />} />}
 				/>
 				<Route
 					path="/about"
-					component={About}
+					element={<CommonLayout component={<About />} />}
 				/>
 				<Route
 					path="/services"
-					component={Treatments}
+					element={<CommonLayout component={<Treatments />} />}
 				/>
-
 				<Route
 					path="/contact"
-					component={Contact}
+					element={<CommonLayout component={<Contact />} />}
 				/>
 				<Route
 					path="/blogs"
-					exact
-					component={AllBlogs}
+					element={<CommonLayout component={<AllBlogs />} />}
 				/>
-
 				<Route
 					path="/blogs/:blogId"
-					component={BlogDetail}
+					element={<CommonLayout component={<BlogDetail />} />}
 				/>
-
-				<Route
-					path="/admin"
-					component={Admin}
-				/>
-
 				{getUserIsLoggedIn() && (
 					<>
-						<Route path="/blogedit/:blogId">
-							<BlogEdit />
-						</Route>
-
-						<Route path="/new-blog">
-							<NewBlog />
-						</Route>
+						<Route
+							path="/blogedit/:blogId"
+							element={<CommonLayout component={<BlogEdit />} />}
+						/>
+						<Route
+							path="/new-blog"
+							element={<CommonLayout component={<NewBlog />} />}
+						/>
 					</>
 				)}
-				<Route path="*">
-					<NotFound />
-				</Route>
-			</Switch>
-		</Layout>
+			</Routes>
+		</ThemeProvider>
 	);
 }
 

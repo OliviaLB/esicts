@@ -1,5 +1,4 @@
 import { Fragment, useState, useEffect } from 'react';
-import { Prompt } from 'react-router-dom';
 import { useQuill } from 'react-quilljs';
 import 'quill/dist/quill.snow.css';
 
@@ -73,7 +72,7 @@ const BlogForm = (props: any) => {
 				imageId: imageGUID,
 				title,
 				createdDate: current,
-				updatedDate: current
+				updatedDate: current,
 			});
 			swal({
 				title: 'Success',
@@ -108,13 +107,6 @@ const BlogForm = (props: any) => {
 
 	return (
 		<Fragment>
-			<Prompt
-				when={isEntering}
-				message={(location) =>
-					'Are you sure you want to leave? All your entered data will be lost!'
-				}
-			/>
-
 			<div className="wrappercol">
 				<h2>Preview</h2>
 				<div className={style.blogContent}>

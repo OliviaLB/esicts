@@ -1,20 +1,28 @@
-import { Fragment } from "react";
+import { useMediaQuery } from '@mui/material';
+import Banner from './Banner/Banner';
+import classes from './Layout.module.css';
+import DesktopNavigation from './Nav/DesktopNavigation';
+import Footer from './Footer/Footer';
 
-import Nav from "./Nav/Nav";
-import Banner from "./Banner/Banner";
-import Footer from "./Footer/Footer";
-import classes from "./Layout.module.css";
+const CommonLayout: React.FC<{ component: React.ReactNode }> = ({ component }) => {
+	const isMobile = useMediaQuery('(max-width: 1080px)');
+	return (
+		<>
+			{isMobile ? (
+				// <MobileNavigation
+				// 	handleLogout={handleLogout}
+				// 	toggleLayerDrawer={toggleLayerDrawer}
+				// />
+        <></>
+			) : (
+				<DesktopNavigation />
+			)}
+			<Banner />
+			<main className={classes.main}>{component} </main>
 
-const Layout = (props: any) => {
-  return (
-    <Fragment>
-      <Nav />
-      <Banner />
-      <main className={classes.main}>{props.children} </main>
-
-      <Footer />
-    </Fragment>
-  );
+			<Footer />
+		</>
+	);
 };
 
-export default Layout;
+export default CommonLayout;

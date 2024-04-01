@@ -6,12 +6,8 @@ import useHttp from '../hooks/use-http';
 import { getSingleBlog } from '../lib/api';
 import LoadingSpinner from '../Components/UI/LoadingSpinner';
 
-interface ParamTypes {
-	blogId: string;
-}
-
 const BlogDetail = () => {
-	const params = useParams<ParamTypes>();
+	const params = useParams();
 
 	const { blogId } = params;
 

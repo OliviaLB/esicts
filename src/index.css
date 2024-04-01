@@ -25,14 +25,10 @@
 	border-radius: var(--border-radius);
 }
 
-html {
-	font-size: 62.5%;
-	min-width: 320px;
-}
+
 
 body {
 	margin: 0;
-	padding-top: 4rem;
 	font-family: 'Raleway', sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
 		'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
 	-webkit-font-smoothing: antialiased;

@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { SignIn } from '../../lib/Authentication';
 import styles from './SigninForm.module.css';
 
@@ -20,7 +20,7 @@ const SigninForm = () => {
 		setPassword(event.currentTarget.value);
 	};
 
-	const history = useHistory();
+	const history = useNavigate();
 
 	const onFormSubmit = () => {
 		if (rememberUserId) {
@@ -31,7 +31,7 @@ const SigninForm = () => {
 		if (!loggingIn) {
 			setLoggingIn(true);
 			SignIn(userName, password);
-			history.push('/blogs');
+			history('/blogs');
 		}
 	};
 

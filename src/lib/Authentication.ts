@@ -9,7 +9,7 @@ const headers: AxiosRequestConfig = {
 };
 
 const client = axios.create({
-	baseURL: 'https://emstuart.shieldtherapy.com/',
+	baseURL: 'https://emstuartinjuries.com/',
 	headers: { Accept: 'application/json' },
 });
 
