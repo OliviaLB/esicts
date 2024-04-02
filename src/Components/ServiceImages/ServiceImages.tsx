@@ -8,7 +8,12 @@ import rximg from '../../Assets/Images/Back.jpeg';
 const ServiceImages = () => {
 	return (
 		<>
-			<Typography variant="h3">Are you injured or in pain?</Typography>
+			<Typography
+				variant="h3"
+				sx={{ marginBottom: '1rem' }}
+			>
+				Are you injured or in pain?
+			</Typography>
 
 			<Box className="image_wrapper">
 				<Box

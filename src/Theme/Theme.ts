@@ -80,7 +80,7 @@ export const appTheme = createTheme({
 			fontWeight: '500',
 			color: '#fff',
 			lineHeight: 1.2,
-			fontFamily: "'Nunito', sans-serif",
+			fontFamily: 'Raleway',
 			letterSpacing: '1px',
 
 			'@media (max-width:600px)': {
@@ -91,11 +91,12 @@ export const appTheme = createTheme({
 			fontSize: '1.2rem',
 			color: '#fff',
 			lineHeight: 1.2,
-			fontFamily: "'Nunito', sans-serif",
+			fontFamily: 'Raleway',
 			textTransform: 'capitalize',
+			fontWeight: 400,
 
 			'@media (max-width:600px)': {
-				fontSize: '1rem',
+				fontSize: '1.2rem',
 			},
 		},
 
@@ -103,13 +104,13 @@ export const appTheme = createTheme({
 			fontSize: '3rem',
 			color: '#303030',
 			lineHeight: 1.2,
-			fontFamily: "'Nunito', sans-serif",
+			fontFamily: 'Raleway',
 			textTransform: 'capitalize',
 			fontWeight: 'bold',
 			textAlign: 'center',
 
 			'@media (max-width:600px)': {
-				fontSize: '1.5rem',
+				fontSize: '1.7rem',
 			},
 		},
 
@@ -117,25 +118,25 @@ export const appTheme = createTheme({
 			fontSize: '1.2rem',
 			color: '#fff',
 			lineHeight: 1.2,
-			fontFamily: "'Nunito', sans-serif",
+			fontFamily: 'Raleway',
 			textTransform: 'capitalize',
 		},
 		body1: {
 			fontSize: '1.2rem',
 			color: '#000',
 			lineHeight: 1.5,
-			fontFamily: "'Nunito', sans-serif",
+			fontFamily: 'Raleway',
 			fontWeight: 500,
 			textAlign: 'justify',
 			'@media (max-width: 375px)': {
-				fontSize: '0.8rem',
+				fontSize: '1rem',
 			},
 		},
 		body2: {
 			fontSize: '0.875rem',
 			color: '#666',
 			lineHeight: 1.5,
-			fontFamily: "'Nunito', sans-serif",
+			fontFamily: 'Raleway',
 		},
 	},
 

@@ -42,9 +42,11 @@ const Banner = () => {
 					gap: '10px',
 				}}
 			>
-				<Typography variant="h1">
-					Specialist in injury <br />
-					prevention, management & recovery
+				<Typography
+					variant="h1"
+					sx={{ width: '70%' }}
+				>
+					Specialist in injury prevention, management & recovery
 				</Typography>
 				<Typography variant="h2">
 					Offering a wide range of musculoskeletal (MSK) services in Gloucester.
@@ -60,7 +62,7 @@ const Banner = () => {
 					sx={{
 						fontSize: '1.2rem', // Increase font size
 						padding: '12px 24px', // Increase padding for larger button size
-						boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)'
+						boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)',
 					}}
 				>
 					Contact Us
