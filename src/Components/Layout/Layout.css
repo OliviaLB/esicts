@@ -1,0 +1,13 @@
+.layout_wrapper {
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+	align-items: center;
+	overflow-y: auto;
+}
+
+.page_container {
+	padding: 0;
+	margin: 0;
+	width: 100%;
+}

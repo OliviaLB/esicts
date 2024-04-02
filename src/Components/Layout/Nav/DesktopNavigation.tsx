@@ -1,7 +1,8 @@
+import './Navigation.css';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { getUserIsLoggedIn, Signout } from '../../../lib/Authentication';
-import { AppBar, Toolbar, Button, Box, Typography } from '@mui/material';
+import { AppBar, Toolbar, Button, Box, Typography, useTheme } from '@mui/material';
 import { Link } from 'react-router-dom';
 
 export interface Navigation {
@@ -13,6 +14,7 @@ const DesktopNavigation = () => {
 	const [prevState, setNewState] = useState(false);
 	const navigate = useNavigate();
 	const location = useLocation();
+	const theme = useTheme();
 
 	const pages: Navigation[] = [
 		{ pageName: 'Home', url: '/home' },
@@ -36,22 +38,28 @@ const DesktopNavigation = () => {
 		<AppBar position="sticky">
 			<Toolbar sx={{ justifyContent: 'space-between' }}>
 				<Typography
-					sx={{ fontSize: '1.4rem' }}
-					color={'white'}
+					className="business-name"
+					color={theme.palette.primary.contrastText}
 				>
 					Em Stuart Injuries Clinic
 				</Typography>
-				<Box sx={{ display: 'flex', gap: '10px' }}>
+				<Box className="button-wrapper">
 					{pages.map((page, index) => (
 						<Button
 							key={index}
 							variant="contained"
 							color="secondary"
+							className="navigation-button"
 							sx={{
-								width: '8rem',
-								backgroundColor: !isActive(page.url) ? '#25aaf7' : '#fff',
-								color: !isActive(page.url) ? '#fff' : '#25aaf7',
-								border: isActive(page.url) ? '2px solid #25aaf7' : '2px solid #fff',
+								backgroundColor: !isActive(page.url)
+									? theme.palette.secondary.main
+									: theme.palette.primary.contrastText,
+								color: !isActive(page.url)
+									? theme.palette.primary.contrastText
+									: theme.palette.secondary.main,
+								border: isActive('/admin')
+									? `2px solid ${theme.palette.secondary.main}`
+									: `2px solid ${theme.palette.secondary.contrastText}`,
 							}}
 							component={Link}
 							to={page.url}
@@ -64,11 +72,17 @@ const DesktopNavigation = () => {
 						<Button
 							variant="contained"
 							color="secondary"
+							className="navigation-button"
 							sx={{
-								width: '8rem',
-								backgroundColor: !isActive("/admin") ? '#25aaf7' : '#fff',
-								color: !isActive("/admin") ? '#fff' : '#25aaf7',
-								border: isActive("/admin") ? '2px solid #25aaf7' : '2px solid #fff',
+								backgroundColor: !isActive('/admin')
+									? theme.palette.secondary.main
+									: theme.palette.primary.contrastText,
+								color: !isActive('/admin')
+									? theme.palette.primary.contrastText
+									: theme.palette.secondary.main,
+								border: isActive('/admin')
+									? `2px solid ${theme.palette.secondary.main}`
+									: `2px solid ${theme.palette.secondary.contrastText}`,
 							}}
 							component={Link}
 							to={'/admin'}
@@ -81,11 +95,17 @@ const DesktopNavigation = () => {
 							<Button
 								variant="contained"
 								color="secondary"
+								className="navigation-button"
 								sx={{
-									width: '8rem',
-									backgroundColor: !isActive('/new-blog') ? '#25aaf7' : '#fff',
-									color: !isActive('/new-blog') ? '#fff' : '#25aaf7',
-									border: isActive('/new-blog') ? '2px solid #25aaf7' : '2px solid #fff',
+									backgroundColor: !isActive('/new-blog')
+										? theme.palette.secondary.main
+										: theme.palette.primary.contrastText,
+									color: !isActive('/new-blog')
+										? theme.palette.primary.contrastText
+										: theme.palette.secondary.main,
+									border: isActive('/admin')
+										? `2px solid ${theme.palette.secondary.main}`
+										: `2px solid ${theme.palette.secondary.contrastText}`,
 								}}
 								component={Link}
 								to={'/new-blog'}
@@ -96,11 +116,11 @@ const DesktopNavigation = () => {
 							<Button
 								variant="contained"
 								color="secondary"
+								className="navigation-button"
 								sx={{
-									width: '8rem',
-									backgroundColor: '#25aaf7',
-									color: '#fff',
-									border: '2px solid #fff',
+									backgroundColor: theme.palette.secondary.main,
+									color: theme.palette.primary.contrastText,
+									border: `2px solid ${theme.palette.secondary.contrastText}`,
 								}}
 								onClick={LogUserOut}
 							>

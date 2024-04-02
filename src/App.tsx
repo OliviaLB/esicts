@@ -1,4 +1,3 @@
-import './App.css';
 import { appTheme } from './Theme/Theme';
 import { getUserIsLoggedIn } from './lib/Authentication';
 import { Navigate, Route, Routes } from 'react-router-dom';
@@ -11,7 +10,7 @@ import CommonLayout from './Components/Layout/Layout';
 import Contact from './Pages/Contact';
 import NewBlog from './Pages/NewBlog';
 import Treatments from './Pages/Treatments';
-import Welcome from './Pages/Welcome';
+import Home from './Pages/Home';
 
 function App() {
 	return (
@@ -37,7 +36,7 @@ function App() {
 				/>
 				<Route
 					path="/home"
-					element={<CommonLayout component={<Welcome />} />}
+					element={<CommonLayout component={<Home />} />}
 				/>
 				<Route
 					path="/about"

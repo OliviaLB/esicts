@@ -1,3 +1,4 @@
+import './Layout.css';
 import { Box, useMediaQuery } from '@mui/material';
 import Banner from './Banner/Banner';
 import DesktopNavigation from './Nav/DesktopNavigation';
@@ -7,23 +8,15 @@ import MobileNavigation from './Nav/MobileNavigation';
 const CommonLayout: React.FC<{ component: React.ReactNode }> = ({ component }) => {
 	const isMobile = useMediaQuery('(max-width: 1300px)');
 	return (
-		<Box
-			sx={{
-				display: 'flex',
-				flexDirection: 'column',
-				flexGrow: 1,
-				alignItems: 'center',
-				overflowY: 'auto',
-			}}
-		>
+		<Box className="layout_wrapper">
 			{isMobile ? <MobileNavigation /> : <DesktopNavigation />}
 
-			<Box sx={{ padding: 0, margin: 0, maxWidth: '1800px', width: '100%' }}>
+			<Box className="page_container">
 				<Banner />
 				{component}
-			</Box>
 
-			<Footer />
+				<Footer />
+			</Box>
 		</Box>
 	);
 };

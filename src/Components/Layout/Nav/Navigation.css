@@ -1,0 +1,12 @@
+.business-name {
+	font-size: 1.4rem;
+}
+
+.button-wrapper {
+	display: flex;
+	gap: 10px;
+}
+
+.navigation-button {
+	width: 8rem;
+}
