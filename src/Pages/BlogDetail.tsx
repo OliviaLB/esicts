@@ -1,17 +1,13 @@
+import { getSingleBlog } from '../lib/api';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-
 import HighlightedBlog from '../Components/blogs/HighlightedBlog';
-import useHttp from '../hooks/use-http';
-import { getSingleBlog } from '../lib/api';
 import LoadingSpinner from '../Components/UI/LoadingSpinner';
+import useHttp from '../hooks/use-http';
 
-interface ParamTypes {
-	blogId: string;
-}
 
 const BlogDetail = () => {
-	const params = useParams<ParamTypes>();
+	const params = useParams();
 
 	const { blogId } = params;
 

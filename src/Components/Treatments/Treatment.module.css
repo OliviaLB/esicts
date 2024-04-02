@@ -19,7 +19,15 @@
 }
 
 .service__desc {
-  font-size: 2.8rem;
+  font-size: 2.3rem;
+}
+
+.service__subheading {
+  font-size: 1.8rem;
+  margin-top: -2rem;
+  padding-bottom: 2rem;
+  font-weight: 500;
+  text-align: center;
 }
 
 .service__price {
@@ -56,12 +64,15 @@
 
 .ul_container {
   display: flex;
-  justify-content: center;
   align-items: center;
 }
 
 .bullet {
   padding-right: 1rem;
+}
+
+.bullet_text {
+  font-size: 1.5rem;
 }
 
 .price {
@@ -77,10 +88,16 @@
   margin: 20px 20px;
 }
 
-.needling {
+.multi_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.multi_price {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   flex-grow: 1;
 }
 

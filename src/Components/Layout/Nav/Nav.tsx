@@ -1,4 +1,4 @@
-import { NavLink, useHistory } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import classes from './Nav.module.css';
 import { FaBars } from 'react-icons/fa';
 import React, { useState } from 'react';
@@ -8,12 +8,12 @@ const Nav = () => {
 	const [isNavExpanded, setIsNavExpanded] = useState(false);
 	const [prevState, setNewState] = useState(false);
 	const contentClassname = isNavExpanded ? `${classes['']}` : classes.collapsible;
-	const history = useHistory();
+	const history = useNavigate();
 
 	const LogUserOut = (event: React.MouseEvent<HTMLElement>) => {
 		Signout();
 		setNewState(!prevState);
-		history.push('/home');
+		history('/home');
 	};
 
 	return (
@@ -37,65 +37,30 @@ const Nav = () => {
 
 				<ul className={`${contentClassname}`}>
 					<li>
-						<NavLink
-							to="/home"
-							activeClassName={classes.active}
-						>
-							Home
-						</NavLink>
+						<NavLink to="/home">Home</NavLink>
 					</li>
 					<li>
-						<NavLink
-							to="/about"
-							activeClassName={classes.active}
-						>
-							About Us
-						</NavLink>
+						<NavLink to="/about">About Us</NavLink>
 					</li>
 					<li>
-						<NavLink
-							to="/services"
-							activeClassName={classes.active}
-						>
-							Services
-						</NavLink>
+						<NavLink to="/services">Services</NavLink>
 					</li>
 
 					<li>
-						<NavLink
-							to="/blogs"
-							activeClassName={classes.active}
-						>
-							Blog
-						</NavLink>
+						<NavLink to="/blogs">Blog</NavLink>
 					</li>
 					<li>
-						<NavLink
-							to="/contact"
-							activeClassName={classes.active}
-						>
-							Contact Us
-						</NavLink>
+						<NavLink to="/contact">Contact Us</NavLink>
 					</li>
 					{!getUserIsLoggedIn() && (
 						<li>
-							<NavLink
-								to="/admin"
-								activeClassName={classes.active}
-							>
-								Login
-							</NavLink>
+							<NavLink to="/admin">Login</NavLink>
 						</li>
 					)}
 					{getUserIsLoggedIn() && (
 						<>
 							<li>
-								<NavLink
-									to="/new-blog"
-									activeClassName={classes.active}
-								>
-									Write a Blog
-								</NavLink>
+								<NavLink to="/new-blog">Write a Blog</NavLink>
 							</li>
 							<li>
 								<button
