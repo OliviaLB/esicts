@@ -1,12 +1,12 @@
 import { Typography } from '@mui/material';
 import Testimonial from '../Components/Testimonial/Testimonial';
-import WWD from '../Components/WWD/WWD';
+import ServiceImages from '../Components/ServiceImages/ServiceImages';
 
 const Welcome = () => {
 	return (
 		<>
 			<div className="block">
-				<WWD />
+				<ServiceImages />
 			</div>
 
 			<div className="block block--shade">

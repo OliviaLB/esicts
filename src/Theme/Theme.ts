@@ -99,7 +99,6 @@ export const appTheme = createTheme({
 			textTransform: 'capitalize',
 			fontWeight: 'bold',
 			textAlign: 'center',
-			marginBottom: '1.5rem',
 		},
 
 		h4: {

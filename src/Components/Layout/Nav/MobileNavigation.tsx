@@ -56,6 +56,7 @@ const MobileNavigation = () => {
 							component={Link}
 							to={page.url}
 							sx={{ fontSize: '1.2rem' }}
+							key={`${page}-index`}
 						>
 							{page.pageName}
 						</ListItemButton>
