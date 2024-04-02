@@ -129,17 +129,6 @@ li {
 	width: 70%;
 }
 
-.block h3,
-.block--shade h3 {
-	color: var(--color-secondary);
-	font-weight: bold;
-	text-align: center;
-	margin-bottom: 1.5rem;
-	margin-left: auto;
-	margin-right: auto;
-	width: 70%;
-}
-
 .block p,
 .block--shade p {
 	margin-left: auto;
@@ -163,19 +152,14 @@ li {
 		padding: 60px 0rem;
 	}
 
-	.block p,
-	.block--shade p {
-		padding: 0rem 2rem;
-		line-height: 2.5rem;
-		letter-spacing: 0.3rem;
-	}
+	
 }
 
 /* Icons */
 
 .icon {
-	width: 4rem;
-	height: 4rem;
+	width: 3rem;
+	height: 3rem;
 }
 
 .icon--primary {
@@ -195,7 +179,7 @@ li {
 
 .media__title {
 	margin-top: 1rem;
-	font-size: 1.8rem;
+	font-size: 1.25rem;
 	font-weight: 600;
 	color: var(--color-primary);
 	width: 25rem;

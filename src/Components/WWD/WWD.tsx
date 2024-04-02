@@ -8,7 +8,7 @@ import rximg from '../../Assets/Images/Back.jpeg';
 const WWD = () => {
 	return (
 		<Fragment>
-			<Typography variant='h3'>Are you injured or in pain?</Typography>
+			<Typography variant="h3">Are you injured or in pain?</Typography>
 
 			<Box
 				sx={{
@@ -51,7 +51,13 @@ const WWD = () => {
 					>
 						<Typography
 							variant="h3"
-							sx={{ display: 'flex', gap: '10px', alignItems: 'center', justifyContent: 'center' }}
+							sx={{
+								display: 'flex',
+								gap: '10px',
+								alignItems: 'center',
+								justifyContent: 'center',
+								color: '#25aaf7',
+							}}
 						>
 							About Us
 						</Typography>
@@ -89,7 +95,13 @@ const WWD = () => {
 					>
 						<Typography
 							variant="h3"
-							sx={{ display: 'flex', gap: '10px', alignItems: 'center', justifyContent: 'center' }}
+							sx={{
+								display: 'flex',
+								gap: '10px',
+								alignItems: 'center',
+								justifyContent: 'center',
+								color: '#25aaf7',
+							}}
 						>
 							Services
 						</Typography>
@@ -127,7 +139,13 @@ const WWD = () => {
 					>
 						<Typography
 							variant="h3"
-							sx={{ display: 'flex', gap: '10px', alignItems: 'center', justifyContent: 'center' }}
+							sx={{
+								display: 'flex',
+								gap: '10px',
+								alignItems: 'center',
+								justifyContent: 'center',
+								color: '#25aaf7',
+							}}
 						>
 							Education
 						</Typography>

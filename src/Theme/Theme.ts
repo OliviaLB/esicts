@@ -76,14 +76,34 @@ export const appTheme = createTheme({
 			color: '#fff',
 			lineHeight: 1.2,
 			fontFamily: "'Nunito', sans-serif",
-			textTransform: 'capitalize'
+			textTransform: 'capitalize',
+		},
+
+		h3: {
+			fontSize: '3rem',
+			color: '#303030',
+			lineHeight: 1.2,
+			fontFamily: "'Nunito', sans-serif",
+			textTransform: 'capitalize',
+			fontWeight: 'bold',
+			textAlign: 'center',
+			marginBottom: '1.5rem',
+		},
+
+		h4: {
+			fontSize: '1.2rem',
+			color: '#fff',
+			lineHeight: 1.2,
+			fontFamily: "'Nunito', sans-serif",
+			textTransform: 'capitalize',
 		},
 		body1: {
-			fontSize: '1rem',
-			color: '#333', // Set your preferred color for body text
+			fontSize: '1.2rem',
+			color: '#000',
 			lineHeight: 1.5,
 			fontFamily: "'Nunito', sans-serif",
 			fontWeight: 500,
+			textAlign: 'justify',
 			'@media (max-width: 375px)': {
 				fontSize: '0.8rem',
 			},

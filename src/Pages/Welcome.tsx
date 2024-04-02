@@ -1,3 +1,4 @@
+import { Typography } from '@mui/material';
 import Testimonial from '../Components/Testimonial/Testimonial';
 import WWD from '../Components/WWD/WWD';
 
@@ -9,23 +10,28 @@ const Welcome = () => {
 			</div>
 
 			<div className="block block--shade">
-				<h2>WHY CHOOSE EM STUART'S INJURIES CLINIC?</h2>
-				<h3>PERSONALISED CARE DESIGNED TO SUIT YOUR NEEDS</h3>
-				<div>
-					<p>
+				<Typography variant="h3">WHY CHOOSE EM STUART'S INJURIES CLINIC?</Typography>
+				<Typography
+					variant="h3"
+					sx={{ color: '#25aaf7', fontSize: '2.3rem' }}
+				>
+					PERSONALISED CARE DESIGNED TO SUIT YOUR NEEDS
+				</Typography>
+				<>
+					<Typography variant="body1">
 						We are a private injury clinic based in the very heart of Gloucester city centre. We
 						change the lives of our patients by bringing them relief and treatment for those
 						niggling pains and conditions that affect their lives and wellbeing day in, day out.{' '}
-					</p>
+					</Typography>
 
-					<p>
+					<Typography variant="body1">
 						We treat a range of problems including sports injuries, post-operative rehabilitation
 						and musculoskeletal (MSK) conditions. Our focus is the accurate assessment, diagnosis
 						and swift recovery of each and every patient, using a wide range of techniques and
 						exercises. With our patients’ interests and wellbeing as the goal, we work with them
 						every step of the way to bring them back to full physical health.
-					</p>
-				</div>
+					</Typography>
+				</>
 
 				<div className="flexcontainer">
 					<div className="media flex1x3">
@@ -84,7 +90,6 @@ const Welcome = () => {
 			</div>
 
 			<div className="block">
-				{' '}
 				<Testimonial />
 			</div>
 		</>
