@@ -165,7 +165,7 @@ const Treatment = () => {
 				<div className="flex1x4">
 					<h3 className={classes.service__desc}>Oncology Massage</h3>
 					<p>
-						Oncology massage offers compassionate and specialized care tailored to individuals
+						Oncology massage offers compassionate and specialised care tailored to individuals
 						navigating the challenges of cancer diagnosis and treatment. Delivered by trained
 						therapists with a deep understanding of the unique needs and considerations of oncology
 						patients, this gentle and soothing therapy aims to alleviate physical discomfort, reduce
@@ -328,7 +328,7 @@ const Treatment = () => {
 					<p>
 						Progress your rehabilitation with an additional rehab program. Tailored to individual
 						needs, our program addresses a spectrum of musculoskeletal challenges, from sprains to
-						biomechanical imbalances, in alignment with personalized recovery objectives. Through
+						biomechanical imbalances, in alignment with personalised recovery objectives. Through
 						expert application, we aim to expedite healing processes, alleviate discomfort, and
 						empower clients on their journey toward improved function and holistic well-being.
 					</p>
