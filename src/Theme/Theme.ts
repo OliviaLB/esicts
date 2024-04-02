@@ -82,6 +82,10 @@ export const appTheme = createTheme({
 			lineHeight: 1.2,
 			fontFamily: "'Nunito', sans-serif",
 			letterSpacing: '1px',
+
+			'@media (max-width:600px)': {
+				fontSize: '1.5rem',
+			},
 		},
 		h2: {
 			fontSize: '1.2rem',
@@ -89,6 +93,10 @@ export const appTheme = createTheme({
 			lineHeight: 1.2,
 			fontFamily: "'Nunito', sans-serif",
 			textTransform: 'capitalize',
+
+			'@media (max-width:600px)': {
+				fontSize: '1rem',
+			},
 		},
 
 		h3: {
@@ -99,6 +107,10 @@ export const appTheme = createTheme({
 			textTransform: 'capitalize',
 			fontWeight: 'bold',
 			textAlign: 'center',
+
+			'@media (max-width:600px)': {
+				fontSize: '1.5rem',
+			},
 		},
 
 		h4: {

@@ -38,9 +38,14 @@ const Testimonial = () => {
 	};
 
 	return (
-		<>
-			<Typography variant="h3">What our clients have to say:</Typography>
-			<Box className="testimonial_wrapper">
+		<Box className="testimonial_wrapper">
+			<Typography
+				variant="h3"
+				sx={{ marginBottom: '1rem' }}
+			>
+				What our clients have to say:
+			</Typography>
+			<Box className="testimonial_box">
 				<IconButton
 					onClick={handlePrev}
 					aria-label="Previous testimonial"
@@ -72,7 +77,7 @@ const Testimonial = () => {
 					<ArrowForwardIosIcon />
 				</IconButton>
 			</Box>
-		</>
+		</Box>
 	);
 };
 
