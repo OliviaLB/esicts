@@ -2,10 +2,15 @@ import { createTheme } from '@mui/material/styles';
 
 declare module '@mui/material/styles' {
 	interface Theme {
-		actionBox?: {
-			background?: string;
-			text?: string;
-			hoverBackground?: string;
+		footer: {
+			background: string;
+			text: string;
+			border: string;
+		};
+
+		iconButton: {
+			color: string;
+			borderHover: string;
 		};
 		gradient1?: {
 			background: string;
@@ -19,10 +24,15 @@ declare module '@mui/material/styles' {
 	}
 	// allow configuration using `createTheme`
 	interface ThemeOptions {
-		actionBox?: {
-			background?: string;
-			text?: string;
-			hoverBackground?: string;
+		footer?: {
+			background: string;
+			text: string;
+			border: string;
+		};
+
+		iconButton: {
+			color: string;
+			borderHover: string;
 		};
 		gradient1?: {
 			background: string;
@@ -50,6 +60,7 @@ export const appTheme = createTheme({
 			light: '#34353e', // Dark Blue/Grey for icon buttons
 			contrastText: '#FFFFFF', // White
 		},
+
 		background: {
 			default: '#f3f8fc',
 		},
@@ -61,7 +72,8 @@ export const appTheme = createTheme({
 			main: '#ff9800',
 		},
 	},
-
+	footer: { background: '#303030', text: '#ffffff', border: '#ffffff' },
+	iconButton: { color: '#25aaf7', borderHover: '#ffffff' },
 	typography: {
 		h1: {
 			fontSize: '3rem',

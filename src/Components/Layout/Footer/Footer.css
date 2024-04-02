@@ -1,0 +1,21 @@
+.footer_heading {
+	text-transform: uppercase;
+}
+
+.footer_button-wrapper {
+	display: flex;
+	justify-content: center;
+	gap: 10px;
+}
+
+.footer_category-heading {
+	font-weight: bolder;
+	text-transform: uppercase;
+	text-decoration: underline;
+}
+
+.links_wrapper {
+	display: flex;
+	align-items: center;
+	padding-bottom: 1rem;
+}

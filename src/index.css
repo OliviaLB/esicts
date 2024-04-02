@@ -46,6 +46,17 @@ body {
 	width: 100%;
 }
 
+/* Positioning */
+.gap_10px {
+	gap: 10px;
+}
+
+.content_align-center {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+
 /* Typography */
 
 h1,
