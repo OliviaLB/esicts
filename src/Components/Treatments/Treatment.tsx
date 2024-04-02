@@ -209,7 +209,6 @@ const Treatment = () => {
 				</div>
 
 				<div className={`${classes.service__price} flex1x4`}>
-					<h3 className={classes.service__desc}>Session Price:</h3>
 					<p className={classes.service__time}>Treatment Times Vary</p>
 					<div className={classes.price}>
 						<i className="fa-light fa-sterling-sign"></i>50
@@ -255,7 +254,6 @@ const Treatment = () => {
 					</div>
 				</div>
 				<div className={`${classes.service__price} flex1x4`}>
-					<h3 className={classes.service__desc}>Session Price:</h3>
 					<div className={classes.price}>
 						<i className="fa-light fa-sterling-sign"></i>10
 					</div>
@@ -302,7 +300,6 @@ const Treatment = () => {
 					</div>
 				</div>
 				<div className={`${classes.service__price} flex1x4`}>
-					<h3 className={classes.service__desc}>Session Price:</h3>
 					<p>
 						Can be added onto another service such as an assessment or sports massage. Your{' '}
 						<b>first dry needling treatment is FREE</b>. If you find it successful in treating your
@@ -368,7 +365,6 @@ const Treatment = () => {
 					</div>
 				</div>
 				<div className={`${classes.service__price} flex1x4`}>
-					<h3 className={classes.service__desc}>Session Price:</h3>
 					<div className={classes.price}>
 						<i className="fa-light fa-sterling-sign"></i>5
 					</div>
