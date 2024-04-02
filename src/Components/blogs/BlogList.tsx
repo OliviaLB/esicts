@@ -1,5 +1,5 @@
 import { Fragment, useState, useEffect } from 'react';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { deleteBlog, deleteBlogImage } from '../../lib/api';
 import { Blog } from './Blog-Interfaces';
 
@@ -32,7 +32,7 @@ const sortBlogs = (blogs: Blog[], key: string, ascending: boolean): Blog[] => {
 };
 
 const BlogList: React.FC<{ blogs: Blog[] }> = ({ blogs }) => {
-	const history = useHistory();
+	const history = useNavigate();
 	const location = useLocation();
 	const [sortedBlogs, setSortedBlogs] = useState<Blog[]>(blogs);
 
@@ -45,7 +45,7 @@ const BlogList: React.FC<{ blogs: Blog[] }> = ({ blogs }) => {
 
 	const changeSortingHandler = (key: string) => {
 		const order = sortKey === key && isSortingAscending ? 'desc' : 'asc';
-		history.push({
+		history({
 			pathname: location.pathname,
 			search: `?sort=${key}&order=${order}`,
 		});

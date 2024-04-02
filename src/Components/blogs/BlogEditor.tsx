@@ -1,5 +1,5 @@
-import { Fragment, useState, useEffect } from 'react';
-import { Prompt, useHistory } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useQuill } from 'react-quilljs';
 import 'quill/dist/quill.snow.css';
 import swal from 'sweetalert';
@@ -12,12 +12,8 @@ import classes from './BlogForm.module.css';
 import { retrieveImage, updateBlog, updateBlogImage } from '../../lib/api';
 import { Blog } from './Blog-Interfaces';
 
-interface ParamTypes {
-	blogId: string;
-}
-
 const BlogEditor = (props: Blog) => {
-	const params = useParams<ParamTypes>();
+	const params = useParams();
 	const blogId = params.blogId;
 	const { quill, quillRef } = useQuill();
 	const [isEntering, setIsEntering] = useState(false);
@@ -31,7 +27,7 @@ const BlogEditor = (props: Blog) => {
 	const [encodedImage, setEncodedImage] = useState<string | null>(null);
 	const currentDate = new Date();
 
-	let history = useHistory();
+	let history = useNavigate();
 
 	const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		setTitleContent(event.target.value);
@@ -84,7 +80,7 @@ const BlogEditor = (props: Blog) => {
 					ok: 'OK',
 				},
 			} as any);
-			await history.push('/home');
+			await history('/home');
 		} catch (error) {
 			if (error instanceof Error) {
 				let message = error.message;
@@ -130,13 +126,7 @@ const BlogEditor = (props: Blog) => {
 	};
 
 	return (
-		<Fragment>
-			<Prompt
-				when={isEntering}
-				message={(location) =>
-					'Are you sure you want to leave? All your entered data will be lost!'
-				}
-			/>
+		<>
 			<Card>
 				<form
 					onFocus={formFocusedHandler}
@@ -199,7 +189,7 @@ const BlogEditor = (props: Blog) => {
 					</div>
 				</form>
 			</Card>
-		</Fragment>
+		</>
 	);
 };
 
