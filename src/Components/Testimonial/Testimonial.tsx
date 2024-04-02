@@ -1,8 +1,10 @@
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
-import { useState, useEffect } from 'react';
+import './Testimonial.css';
 import { Box, IconButton, Typography } from '@mui/material';
+import { useState, useEffect } from 'react';
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import StarIcon from '@mui/icons-material/Star';
+
 const testimonials = [
 	{
 		id: 1,
@@ -38,73 +40,37 @@ const Testimonial = () => {
 	return (
 		<>
 			<Typography variant="h3">What our clients have to say:</Typography>
-			<Box
-				sx={{
-					position: 'relative',
-					display: 'flex',
-					flexDirection: 'column',
-					alignItems: 'center',
-					marginTop: '16px',
-				}}
-			>
-				<Box
-					sx={{
-						position: 'relative',
-						display: 'flex',
-						alignItems: 'center',
-						height: '150px', // Set a fixed height for the testimonial container
-					}}
+			<Box className="testimonial_wrapper">
+				<IconButton
+					onClick={handlePrev}
+					aria-label="Previous testimonial"
+					className="button_arrow-left"
 				>
-					<IconButton
-						onClick={handlePrev}
-						aria-label="Previous testimonial"
-						sx={{ position: 'absolute', left: 0, top: '50%', transform: 'translateY(-50%)' }}
-					>
-						<ArrowBackIosNewIcon />
-					</IconButton>
-					<Box
-						sx={{
-							display: 'flex',
-							flexDirection: 'column',
-							alignItems: 'center',
-							marginLeft: '48px', // Adjust this value as needed to create space between stars and text
-							overflow: 'hidden', // Hide any overflowing content
-						}}
-					>
-						<Box sx={{ display: 'flex', marginBottom: '1rem', alignItems: 'center' }}>
-							<StarIcon sx={{ color: '#dbbb49' }} />
-							<StarIcon sx={{ color: '#dbbb49' }} />
-							<StarIcon sx={{ color: '#dbbb49' }} />
-							<StarIcon sx={{ color: '#dbbb49' }} />
-							<StarIcon sx={{ color: '#dbbb49' }} />
-						</Box>
-						<Typography
-							variant="body1"
-							sx={{
-								transition: 'opacity 0.5s',
-								opacity: 1,
-								maxHeight: '80px',
-								overflow: 'hidden',
-								textOverflow: 'ellipsis',
-							}}
-						>
-							{testimonials[index].text}
-						</Typography>
-						<Typography
-							variant="body1"
-							sx={{ marginTop: '8px', transition: 'opacity 0.5s', opacity: 1 }}
-						>
-							- {testimonials[index].author}
-						</Typography>
+					<ArrowBackIosNewIcon />
+				</IconButton>
+				<Box className="testimonial_card">
+					<Box className="testimonial_card-stars">
+						<StarIcon />
+						<StarIcon />
+						<StarIcon />
+						<StarIcon />
+						<StarIcon />
 					</Box>
-					<IconButton
-						onClick={handleNext}
-						aria-label="Next testimonial"
-						sx={{ position: 'absolute', right: 0, top: '50%', transform: 'translateY(-50%)' }}
+					<Typography variant="body1">{testimonials[index].text}</Typography>
+					<Typography
+						variant="body1"
+						className="testimonial_card-author"
 					>
-						<ArrowForwardIosIcon />
-					</IconButton>
+						- {testimonials[index].author}
+					</Typography>
 				</Box>
+				<IconButton
+					onClick={handleNext}
+					aria-label="Next testimonial"
+					className="button_arrow-right"
+				>
+					<ArrowForwardIosIcon />
+				</IconButton>
 			</Box>
 		</>
 	);
