@@ -83,31 +83,6 @@ li {
 	font-size: 1.8rem;
 }
 
-@media screen and (min-width: 1024px) {
-	body {
-		font-size: 1.8rem;
-	}
-
-	h1 {
-		font-size: 5.3rem;
-	}
-
-	h2 {
-		font-size: 5rem;
-	}
-
-	h3 {
-		font-size: 4rem;
-	}
-	h4 {
-		font-size: 2rem;
-	}
-
-	p,
-	li {
-		font-size: 1.8rem;
-	}
-}
 
 /* Blocks */
 
