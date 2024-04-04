@@ -11,6 +11,7 @@ import BlogDetail from './Pages/BlogDetail';
 import NewBlog from './Pages/NewBlog';
 import { getUserIsLoggedIn } from './lib/Authentication';
 import CommonLayout from './Components/Layout/Layout';
+import Cancellation from './Pages/Cancellation';
 
 function App() {
 	return (
@@ -56,6 +57,10 @@ function App() {
 			<Route
 				path="/blogs/:blogId"
 				element={<CommonLayout component={<BlogDetail />} />}
+			/>
+			<Route
+				path="/cancellation-policy"
+				element={<CommonLayout component={<Cancellation />} />}
 			/>
 			{getUserIsLoggedIn() && (
 				<>
