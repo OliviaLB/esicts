@@ -1,6 +1,6 @@
-import { useLocation } from 'react-router-dom';
-import classes from './Banner.module.css';
+import './Banner.css';
 import { Box, Button, Typography } from '@mui/material';
+import { useLocation } from 'react-router-dom';
 
 const Banner = () => {
 	const location = useLocation();
@@ -20,38 +20,22 @@ const Banner = () => {
 	return (
 		<Box
 			component="div"
+			className="banner-wrapper"
 			sx={{
-				backgroundSize: 'cover',
-				display: 'flex',
-				minHeight: '400px', // Set minHeight instead of fixed height
 				backgroundImage: `url('/Images/${imageName()}')`,
 			}}
 		>
-			<Box
-				sx={{
-					background: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    no-repeat center center`,
-					flexBasis: 0,
-					flexGrow: 1,
-					width: '100%',
-					display: 'flex',
-					justifyContent: 'center',
-					alignItems: 'center',
-					flexDirection: 'column',
-					padding: '3rem 1.5rem',
-					gap: '10px',
-				}}
-			>
+			<Box className="banner-inner">
 				<Typography
 					variant="h1"
-					sx={{ width: '70%' }}
+					className="banner-header"
 				>
 					Specialist in injury prevention, management & recovery
 				</Typography>
-				<Typography variant="h2">
+				<Typography variant="h2" className="banner-text">
 					Offering a wide range of musculoskeletal (MSK) services in Gloucester.
 				</Typography>
-				<Typography variant="h2">
+				<Typography variant="h2" className="banner-text">
 					If you are seeking high quality, professional and reliable care to guide you through your
 					rehabilitation process, please contact us.
 				</Typography>
@@ -59,11 +43,8 @@ const Banner = () => {
 				<Button
 					variant="contained"
 					color="secondary"
-					sx={{
-						fontSize: '1.2rem', // Increase font size
-						padding: '12px 24px', // Increase padding for larger button size
-						boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)',
-					}}
+					className="banner-button"
+					sx={{fontSize: '1.5rem'}}
 				>
 					Contact Us
 				</Button>

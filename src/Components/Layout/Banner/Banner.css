@@ -1,0 +1,43 @@
+.banner-wrapper {
+	background-size: cover;
+	display: flex;
+	min-height: 400px;
+}
+
+.banner-inner {
+	background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), no-repeat center center;
+	flex-basis: 0;
+	flex-grow: 1;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	padding: 3rem 1.5rem;
+	gap: 20px;
+}
+
+.banner-header {
+	text-align: center;
+	width: 70%;
+}
+
+.banner-text {
+	text-align: center;
+}
+
+.banner-button {
+	padding: 12px 24px;
+	box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+	width: 30%;
+}
+
+@media screen and (max-width: 1024px) {
+	.banner-header {
+		width: 100%;
+	}
+
+	.banner-button {
+	width: 90%;
+}
+}

@@ -1,6 +1,6 @@
-import Testimonial from '../Components/Testimonial/Testimonial';
 import ServiceImages from '../Components/ServiceImages/ServiceImages';
 import Services from '../Components/Services/Services';
+import Testimonial from '../Components/Testimonial/Testimonial';
 
 const Home = () => {
 	return (

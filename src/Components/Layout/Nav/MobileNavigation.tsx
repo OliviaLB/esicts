@@ -1,13 +1,12 @@
-import { Box, ListItemButton, Typography } from '@mui/material';
-import { Drawer, List, ListItem, ListItemText, Collapse } from '@mui/material';
-import { ExpandLess, ExpandMore } from '@mui/icons-material';
+import { Drawer, List } from '@mui/material';
 import { Link } from 'react-router-dom';
+import { ListItemButton, Typography } from '@mui/material';
+import { Navigation } from './DesktopNavigation';
+import { useState } from 'react';
 import AppBar from '@mui/material/AppBar';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
-import React, { useState } from 'react';
 import Toolbar from '@mui/material/Toolbar';
-import { Navigation } from './DesktopNavigation';
 
 export interface MobileNavigationParams {
 	handleLogout: () => void;
@@ -29,7 +28,7 @@ const MobileNavigation = () => {
 	};
 
 	return (
-		<AppBar position="static">
+		<AppBar position="sticky">
 			<Toolbar style={{ display: 'flex', justifyContent: 'space-between' }}>
 				<Typography
 					sx={{ fontSize: '1.4rem' }}

@@ -77,11 +77,12 @@ export const appTheme = createTheme({
 	typography: {
 		h1: {
 			fontSize: '3rem',
-			fontWeight: '500',
+			fontWeight: '600',
 			color: '#fff',
 			lineHeight: 1.2,
 			fontFamily: 'Raleway',
 			letterSpacing: '1px',
+			textTransform: 'uppercase',
 
 			'@media (max-width:600px)': {
 				fontSize: '1.5rem',
@@ -101,7 +102,7 @@ export const appTheme = createTheme({
 		},
 
 		h3: {
-			fontSize: '3rem',
+			fontSize: '3.5rem',
 			color: '#303030',
 			lineHeight: 1.2,
 			fontFamily: 'Raleway',
@@ -115,11 +116,16 @@ export const appTheme = createTheme({
 		},
 
 		h4: {
-			fontSize: '1.2rem',
-			color: '#fff',
-			lineHeight: 1.2,
+			fontSize: '2.5rem',
+			color: '#25aaf7',
+			lineHeight: 1,
 			fontFamily: 'Raleway',
 			textTransform: 'capitalize',
+			fontWeight: '600',
+
+			'@media (max-width:600px)': {
+				fontSize: '1.7rem',
+			},
 		},
 		body1: {
 			fontSize: '1.2rem',
@@ -128,7 +134,7 @@ export const appTheme = createTheme({
 			fontFamily: 'Raleway',
 			fontWeight: 500,
 			textAlign: 'justify',
-			'@media (max-width: 375px)': {
+			'@media (max-width:600px)': {
 				fontSize: '1rem',
 			},
 		},

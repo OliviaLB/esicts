@@ -8,9 +8,9 @@ import BlogDetail from './Pages/BlogDetail';
 import BlogEdit from './Pages/BlogEdit';
 import CommonLayout from './Components/Layout/Layout';
 import Contact from './Pages/Contact';
+import Home from './Pages/Home';
 import NewBlog from './Pages/NewBlog';
 import Treatments from './Pages/Treatments';
-import Home from './Pages/Home';
 
 function App() {
 	return (

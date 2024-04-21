@@ -28,60 +28,60 @@ const Services = () => {
 				</Typography>
 			</Box>
 
-			<div className="about_icons-wrapper">
-				<div className="media">
-					<div className="media__image">
+			<Box className="about_icons-wrapper">
+				<Box className="media">
+					<Box className="media__image">
 						<i className="about-icon fa-light fa-file-certificate"></i>
-					</div>
-					<div className="media__body">
-						<div className="media__title">DEGREE QUALIFIED</div>
-					</div>
-				</div>
+					</Box>
+					<Box className="media__body">
+						<Box className="media__title">DEGREE QUALIFIED</Box>
+					</Box>
+				</Box>
 
-				<div className="media">
-					<div className="media__image">
+				<Box className="media">
+					<Box className="media__image">
 						<i className="about-icon fa-light fa-car"></i>
-					</div>
-					<div className="media__body">
-						<div className="media__title">FREE PARKING AND DISABLED ACCESS</div>
-					</div>
-				</div>
+					</Box>
+					<Box className="media__body">
+						<Box className="media__title">FREE PARKING AND DISABLED ACCESS</Box>
+					</Box>
+				</Box>
 
-				<div className="media">
-					<div className="media__image">
+				<Box className="media">
+					<Box className="media__image">
 						<i className="about-icon fa-light fa-door-open"></i>
-					</div>
-					<div className="media__body">
-						<div className="media__title">FLEXIBLE OPERATING HOURS</div>
-					</div>
-				</div>
-				<div className="media">
-					<div className="media__image">
+					</Box>
+					<Box className="media__body">
+						<Box className="media__title">FLEXIBLE OPERATING HOURS</Box>
+					</Box>
+				</Box>
+				<Box className="media">
+					<Box className="media__image">
 						<i className="about-icon fa-light fa-ballot-check"></i>
-					</div>
-					<div className="media__body">
-						<div className="media__title">PERSONALISED TREATMENT DESIGNED FOR YOU</div>
-					</div>
-				</div>
+					</Box>
+					<Box className="media__body">
+						<Box className="media__title">PERSONALISED TREATMENT DESIGNED FOR YOU</Box>
+					</Box>
+				</Box>
 
-				<div className="media">
-					<div className="media__image">
+				<Box className="media">
+					<Box className="media__image">
 						<i className="about-icon fa-light fa-phone-volume"></i>
-					</div>
-					<div className="media__body">
-						<div className="media__title">DESIGNATED BOOKING NUMBER</div>
-					</div>
-				</div>
+					</Box>
+					<Box className="media__body">
+						<Box className="media__title">DESIGNATED BOOKING NUMBER</Box>
+					</Box>
+				</Box>
 
-				<div className="media">
-					<div className="media__image">
+				<Box className="media">
+					<Box className="media__image">
 						<i className="about-icon fa-light fa-dumbbell"></i>
-					</div>
-					<div className="media__body">
-						<div className="media__title">CUSTOMISED REHABILIATION PROGRAMS</div>
-					</div>
-				</div>
-			</div>
+					</Box>
+					<Box className="media__body">
+						<Box className="media__title">CUSTOMISED REHABILIATION PROGRAMS</Box>
+					</Box>
+				</Box>
+			</Box>
 		</Box>
 	);
 };
