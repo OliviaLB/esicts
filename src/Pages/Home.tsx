@@ -1,5 +1,5 @@
 import ServiceImages from '../Components/ServiceImages/ServiceImages';
-import Services from '../Components/Services/Services';
+import ServiceBlock from '../Components/ServiceBlock/ServiceBlock';
 import Testimonial from '../Components/Testimonial/Testimonial';
 
 const Home = () => {
@@ -10,7 +10,7 @@ const Home = () => {
 			</div>
 
 			<div className="block block--shade">
-				<Services />
+				<ServiceBlock />
 			</div>
 
 			<div className="block">

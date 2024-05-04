@@ -10,7 +10,7 @@ import CommonLayout from './Components/Layout/Layout';
 import Contact from './Pages/Contact';
 import Home from './Pages/Home';
 import NewBlog from './Pages/NewBlog';
-import Treatments from './Pages/Treatments';
+import Services from './Pages/Services';
 
 function App() {
 	return (
@@ -44,7 +44,7 @@ function App() {
 				/>
 				<Route
 					path="/services"
-					element={<CommonLayout component={<Treatments />} />}
+					element={<CommonLayout component={<Services />} />}
 				/>
 				<Route
 					path="/contact"

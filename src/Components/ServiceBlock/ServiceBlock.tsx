@@ -1,7 +1,7 @@
 import { Box, Typography } from '@mui/material';
-import './Services.css';
+import './ServiceBlock.css';
 
-const Services = () => {
+const ServiceBlock = () => {
 	return (
 		<Box className="about-wrapper">
 			<Typography variant="h3">WHY CHOOSE EM STUART'S INJURIES CLINIC?</Typography>
@@ -85,4 +85,4 @@ const Services = () => {
 		</Box>
 	);
 };
-export default Services;
+export default ServiceBlock;

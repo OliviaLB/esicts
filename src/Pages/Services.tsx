@@ -1,7 +1,7 @@
 import Treatment from "../Components/Treatments/Treatment"
 
-const Treatments = () => {
+const Services = () => {
   return <Treatment />;
 };
 
-export default Treatments;
+export default Services;

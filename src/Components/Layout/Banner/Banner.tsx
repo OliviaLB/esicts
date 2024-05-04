@@ -1,5 +1,6 @@
 import './Banner.css';
 import { Box, Button, Typography } from '@mui/material';
+import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 
 const Banner = () => {
@@ -32,19 +33,27 @@ const Banner = () => {
 				>
 					Specialist in injury prevention, management & recovery
 				</Typography>
-				<Typography variant="h2" className="banner-text">
+				<Typography
+					variant="h2"
+					className="banner-text"
+				>
 					Offering a wide range of musculoskeletal (MSK) services in Gloucester.
 				</Typography>
-				<Typography variant="h2" className="banner-text">
+				<Typography
+					variant="h2"
+					className="banner-text"
+				>
 					If you are seeking high quality, professional and reliable care to guide you through your
 					rehabilitation process, please contact us.
 				</Typography>
 
 				<Button
+					component={Link}
+					to={'/contact'}
 					variant="contained"
 					color="secondary"
 					className="banner-button"
-					sx={{fontSize: '1.5rem'}}
+					sx={{ fontSize: '1.5rem' }}
 				>
 					Contact Us
 				</Button>

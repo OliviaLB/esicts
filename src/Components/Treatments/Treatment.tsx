@@ -1,342 +1,535 @@
+import { Box, Grid, Typography } from '@mui/material';
 import acupuncture from '../../Assets/Images/Acupuncture.jpeg';
-import massage from '../../Assets/Images/Massage.jpeg';
-import kt from '../../Assets/Images/KT2.jpeg';
-import stones from '../../Assets/Images/Stones.jpeg';
 import back from '../../Assets/Images/Back.jpeg';
+import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import cupping from '../../Assets/Images/Cupping.jpeg';
-import classes from './Treatment.module.css';
+import kt from '../../Assets/Images/KT2.jpeg';
+import massage from '../../Assets/Images/Massage.jpeg';
+import stones from '../../Assets/Images/Stones.jpeg';
+import './Treatment.css';
 
 const Treatment = () => {
 	return (
 		<>
-			<h2>Our Services</h2>
-			<div className="flexcontainer">
-				<div className={`${classes.service} flex1x4`}>
-					<div className={classes.service__header}>
-						<img
+			<Typography variant="h3">Our Services</Typography>
+			<Box className="services_container">
+				<Grid
+					container
+					spacing={2}
+				>
+					{/* Image */}
+					<Grid
+						item
+						md={3}
+						xs={12}
+						className="service-grid_image-wrapper"
+					>
+						<Box
+							component={'img'}
 							src={back}
-							className={classes.service__image__left}
+							className="service__image__left"
 							alt="A person on their side having their shoulder examined by a practitioner."
-						/>
-					</div>
-				</div>
-				<div className="flex1x4">
-					<h3 className={classes.service__desc}>Injury assessment, treatment and rehabilitation</h3>
-					<p>
-						An injury assessment takes approximately 90 minutes and includes postural assessment,
-						functional screening, musculoskeletal tests, and identification of predisposing factors.
-						Once we have identified the issue, I explain what treatments would be most beneficial
-						and why, then discuss what can also be done at home to address the injury and aid
-						rehabilitation. I back this up with a programme with full instructions, explaining what
-						to do so that you are not too overwhelmed with information from the session.
-					</p>
-				</div>
-				<div className="flex1x4">
-					<h3 className={classes.service__desc}>Benefits Include:</h3>
+						></Box>
+					</Grid>
 
-					<div className={classes.ul_container}>
-						<ul>
-							<li>
-								<i className={`${classes.bullet} fa-regular fa-circle-check`}></i>
-								Pain Relief
-							</li>
-							<li>
-								<i className={`${classes.bullet} fa-regular fa-circle-check`}></i>
-								Relaxation of muscle tissue
-							</li>
-							<li>
-								<i className={`${classes.bullet} fa-regular fa-circle-check`}></i>
-								Stimulation of muscle tissue
-							</li>
-							<li>
-								<i className={`${classes.bullet} fa-regular fa-circle-check`}></i>
-								Increases local circulation
-							</li>
-						</ul>
-					</div>
-				</div>
+					{/* Description */}
+					<Grid
+						item
+						md={3}
+						xs={12}
+					>
+						<Box className="service-grid-description">
+							<Typography
+								variant="body1"
+								className="description-heading"
+							>
+								Injury assessment, treatment and rehabilitation
+							</Typography>
 
-				<div className={`${classes.service__price} flex1x4`}>
-					<h3 className={classes.service__desc}>Session Price:</h3>
-					<p className={classes.service__time}>90 Minute Appointment</p>
-					<div className={classes.price}>
-						<i className="fa-light fa-sterling-sign"></i>45
-					</div>
-				</div>
+							<Typography
+								variant="body1"
+								className="description-body"
+							>
+								An injury assessment includes postural assessment, functional screening,
+								musculoskeletal tests, and identification of predisposing factors. Once we have
+								identified the issue, I explain what treatments would be most beneficial and why,
+								then discuss what can also be done at home to address the injury and aid
+								rehabilitation. I back this up with a programme with full instructions, explaining
+								what to do so that you are not too overwhelmed with information from the session.
+							</Typography>
+						</Box>
+					</Grid>
 
-				<div className={`${classes.service} flex1x4`}>
-					<div className={classes.service__header}>
-						<img
-							src={acupuncture}
-							className={classes.service__image__left}
-							alt="A therapist placing acupuncture needles into a patient's back."
-						/>
-					</div>
-				</div>
-				<div className="flex1x4">
-					<h3 className={classes.service__desc}>Dry Needling</h3>
-					<p>
-						Acupuncture is used to complement physiotherapy treatment in assisting with pain relief.
-						It also aides in the restoration of joint mobility and function. Additional benefits
-						include headache management and nerve pain relief.
-					</p>
-				</div>
-				<div className="flex1x4">
-					<h3 className={classes.service__desc}>Benefits Include:</h3>
-					<div className={classes.ul_container}>
-						<ul>
-							<li>
-								<i className={`${classes.bullet} fa-regular fa-circle-check`}></i>
-								Pain Relief
-							</li>
-							<li>
-								<i className={`${classes.bullet} fa-regular fa-circle-check`}></i>
-								Relaxation of muscle tissue
-							</li>
-							<li>
-								<i className={`${classes.bullet} fa-regular fa-circle-check`}></i>
-								Stimulation of muscle tissue
-							</li>
-							<li>
-								<i className={`${classes.bullet} fa-regular fa-circle-check`}></i>
-								Increases local circulation
-							</li>
-						</ul>
-					</div>
-				</div>
-				<div className={`${classes.service__price} flex1x4`}>
-					<h3 className={classes.service__desc}>Session Price:</h3>
-					<p>
-						Can be added onto another service such as an assessment or sports massage. Your{' '}
-						<b>first dry needling treatment is FREE</b>. If you find it successful in treating your
-						pain then subsequent dry needling treatments will be charge at an{' '}
-						<b>additional fee of £5</b> in conjunction with another service.
-					</p>
-					<div className={classes.needling}>
-						<span className={classes.price}>Free</span>
-						<span className={classes.price}>
-							<i className="fa-light fa-sterling-sign"></i>5
-						</span>
-					</div>
-				</div>
-				<div className={`${classes.service} flex1x4`}>
-					<div className="flex1x4 service">
-						<div className={classes.service__header}>
-							<img
-								src={massage}
-								className={classes.service__image__left}
-								alt="A patient receiving soft tissue therapy treatment."
-							/>
-						</div>
-					</div>
-				</div>
+					{/* Benefits */}
+					<Grid
+						item
+						md={3}
+						xs={12}
+					>
+						<Box className="service-grid-benefits_item">
+							<Typography
+								variant="body1"
+								className="benefits-heading"
+							>
+								Benefits Include:
+							</Typography>
 
-				<div className="flex1x4">
-					<h3 className={classes.service__desc}>Sports & Deep Tissue Massage</h3>
-					<p>
-						You don’t have to be an athlete to get benefits from a sports massage! Massage plays a
-						key role in rehabilitation and injury prevention and your therapist may perform various
-						techniques as part of your treatment. For athletes and sports people, sports massage is
-						highly beneficial prior to an event or to facilitate your regular training regime.
-						Massage will boost circulation, ease tight, painful muscles and soft tissues, as well as
-						aiding flexibility. Following events and heavy training, deep tissue massage can
-						encourage flushing of lactic acid from sore muscles, easing tension and facilitating a
-						speedier recovery. Regular sports massage is often a vital component of an athlete’s
-						training regime in maintaining optimal performance.
-					</p>
-				</div>
-				<div className="flex1x4">
-					<h3 className={classes.service__desc}>Benefits Include:</h3>
-					<div className={classes.ul_container}>
-						<ul>
-							<li>
-								<i className={`${classes.bullet} fa-regular fa-circle-check`}></i>
-								Pain Relief
-							</li>
-							<li>
-								<i className={`${classes.bullet} fa-regular fa-circle-check`}></i>
-								Relaxation of muscle tissue
-							</li>
-							<li>
-								<i className={`${classes.bullet} fa-regular fa-circle-check`}></i>
-								Reduces soft tissue bruising & swelling
-							</li>
-							<li>
-								<i className={`${classes.bullet} fa-regular fa-circle-check`}></i>
-								Increases local circulation
-							</li>
-							<li>
-								<i className={`${classes.bullet} fa-regular fa-circle-check`}></i>
-								Mobilises scar tissue
-							</li>
-						</ul>
-					</div>
-				</div>
+							<Box className="benefits-list_wrapper">
+								<CheckCircleOutlineIcon className="benefit_icon" />
+								<Typography className="benefit_text">Pain Relief</Typography>
+							</Box>
+							<Box className="benefits-list_wrapper">
+								<CheckCircleOutlineIcon className="benefit_icon" />
+								<Typography className="benefit_text">Relaxation of muscle tissue</Typography>
+							</Box>
+							<Box className="benefits-list_wrapper">
+								<CheckCircleOutlineIcon className="benefit_icon" />
+								<Typography className="benefit_text">Stimulation of muscle tissue</Typography>
+							</Box>
+							<Box className="benefits-list_wrapper">
+								<CheckCircleOutlineIcon className="benefit_icon" />
+								<Typography className="benefit_text">Increases local circulation</Typography>
+							</Box>
+						</Box>
+					</Grid>
 
-				<div className={`${classes.service__price} flex1x4`}>
-					<h3 className={classes.service__desc}>Session Price:</h3>
-					<p className={classes.service__time}>45 Minute Appointment</p>
-					<div className={classes.price}>
-						<i className="fa-light fa-sterling-sign"></i>35
-					</div>
-				</div>
-
-				<div className={`${classes.service} flex1x4`}>
-					<div className={classes.service__header}>
-						<img
+					{/* Pricing */}
+					<Grid
+						item
+						md={3}
+						xs={12}
+					>
+						<Box className="service-grid-pricing">
+							<Box className="service-wrapper">
+								<Box className="service-pricing_container">
+									<Typography
+										variant="body2"
+										className="pricing-header"
+									>
+										60 Minutes
+									</Typography>
+									<Box className="pricing-circle">
+										<Typography
+											variant="body2"
+											className="pricing-text"
+										>
+											£55
+										</Typography>
+									</Box>
+								</Box>
+								<Box className="service-pricing_container">
+									<Typography
+										variant="body2"
+										className="pricing-header"
+									>
+										90 Minutes
+									</Typography>
+									<Box className="pricing-circle">
+										<Typography
+											variant="body2"
+											className="pricing-text"
+										>
+											£75
+										</Typography>
+									</Box>
+								</Box>
+							</Box>
+						</Box>
+					</Grid>
+					{/* Image */}
+					<Grid
+						item
+						md={3}
+						xs={12}
+						className="service-grid_image-wrapper"
+					>
+						<Box
+							component={'img'}
 							src={stones}
-							className={classes.service__image__left}
+							className="service__image__left"
 							alt="Hot stones placed on a patient's back."
-						/>
-					</div>
-				</div>
-				<div className="flex1x4">
-					<h3 className={classes.service__desc}>Hot Stones Sports Massage</h3>
-					<p>
-						Relaxing and stress relieving, the heat from the stones produces endorphins, opens blood
-						vessels increasing blood circulation, increases lymph flow (the lymphatic system is your
-						bodies waste disposal system) allowing toxins and waste products to flush out, reducing
-						DOMS (delayed onset muscle soreness) aches and pains.
-					</p>
-				</div>
-				<div className="flex1x4">
-					<h3 className={classes.service__desc}>Benefits Include:</h3>
-					<div className={classes.ul_container}>
-						<ul>
-							<li>
-								<i className={`${classes.bullet} fa-regular fa-circle-check`}></i>
-								Pain Relief
-							</li>
-							<li>
-								<i className={`${classes.bullet} fa-regular fa-circle-check`}></i>
-								Relaxation of muscle tissue
-							</li>
-							<li>
-								<i className={`${classes.bullet} fa-regular fa-circle-check`}></i>
-								Reduces soft tissue bruising & swelling
-							</li>
-							<li>
-								<i className={`${classes.bullet} fa-regular fa-circle-check`}></i>
-								Increases local circulation
-							</li>
-							<li>
-								<i className={`${classes.bullet} fa-regular fa-circle-check`}></i>
-								Mobilises scar tissue
-							</li>
-						</ul>
-					</div>
-				</div>
+						></Box>
+					</Grid>
 
-				<div className={`${classes.service__price} flex1x4`}>
-					<h3 className={classes.service__desc}>Session Price:</h3>
-					<p className={classes.service__time}>45 Minute Appointment</p>
-					<div className={classes.price}>
-						<i className="fa-light fa-sterling-sign"></i>40
-					</div>
-				</div>
+					{/* Description */}
+					<Grid
+						item
+						md={3}
+						xs={12}
+					>
+						<Box className="service-grid-description">
+							<Typography
+								variant="body1"
+								className="description-heading"
+							>
+								Sports Therapy Appointment
+							</Typography>
+							<Typography
+								variant="body1"
+								className="description-heading"
+							>
+								Sports Massage, Hot Stones, Cupping & Electrotherapy (excluding TECAR)
+							</Typography>
 
-				<div className={`${classes.service} flex1x4`}>
-					<div className={classes.service__header}>
-						<img
-							src={cupping}
-							className={classes.service__image__left}
-							alt="Cups applied to patient's upper shoulders and neck."
-						/>
-					</div>
-				</div>
-				<div className="flex1x4">
-					<h3 className={classes.service__desc}>Myofascial Dry cupping</h3>
-					<p>
-						Myofascial cupping is derived from Traditional Chinese medicine. Cups are placed on the
-						skin and suction is created and facilitates increased circulation to skin, fascia and
-						muscle and purports to pull stagnant blood from the area and results in a skin pigment
-						similar to a hickey. It is often performed in conjunction with other manual therapy
-						techniques. It’s not suitable for everyone, so before you receive a treatment, a full
-						consultation is performed to determine if it is a suitable treatment.
-					</p>
-				</div>
+							<Typography
+								variant="body1"
+								className="description-body"
+							>
+								Experience recovery like never before with our comprehensive sports therapy
+								appointment. These sessions combine the soothing benefits of sports massage with the
+								therapeutic effects of hot stones, cupping, and electrotherapy. Whether you're
+								seeking relief from injury or aiming to optimise performance, our integrated
+								approach ensures a revitalising experience that leaves you feeling refreshed,
+								revitalised, and ready to conquer your goals.
+							</Typography>
+						</Box>
+					</Grid>
 
-				<div className="flex1x4">
-					<h3 className={classes.service__desc}>Benefits Include:</h3>
-					<div className={classes.ul_container}>
-						<ul>
-							<li>
-								<i className={`${classes.bullet} fa-regular fa-circle-check`}></i>
-								Pain Relief
-							</li>
-							<li>
-								<i className={`${classes.bullet} fa-regular fa-circle-check`}></i>
-								Relaxation of muscle tissue
-							</li>
-							<li>
-								<i className={`${classes.bullet} fa-regular fa-circle-check`}></i>
-								Reduces soft tissue bruising & swelling
-							</li>
-							<li>
-								<i className={`${classes.bullet} fa-regular fa-circle-check`}></i>
-								Increases local circulation
-							</li>
-							<li>
-								<i className={`${classes.bullet} fa-regular fa-circle-check`}></i>
-								Mobilises scar tissue
-							</li>
-						</ul>
-					</div>
-				</div>
+					{/* Benefits */}
+					<Grid
+						item
+						md={3}
+						xs={12}
+					>
+						<Box className="service-grid-benefits_item">
+							<Typography
+								variant="body1"
+								className="benefits-heading"
+							>
+								Benefits Include:
+							</Typography>
 
-				<div className={`${classes.service__price} flex1x4`}>
-					<h3 className={classes.service__desc}>Session Price:</h3>
-					<p className={classes.service__time}>45 Minute Appointment</p>
-					<div className={classes.price}>
-						<i className="fa-light fa-sterling-sign"></i>35
-					</div>
-				</div>
+							<Box className="benefits-list_wrapper">
+								<CheckCircleOutlineIcon className="benefit_icon" />
+								<Typography className="benefit_text">
+									Reduced muscle tension and soreness
+								</Typography>
+							</Box>
+							<Box className="benefits-list_wrapper">
+								<CheckCircleOutlineIcon className="benefit_icon" />
+								<Typography className="benefit_text">
+									Improved circulation and lymphatic drainage
+								</Typography>
+							</Box>
+							<Box className="benefits-list_wrapper">
+								<CheckCircleOutlineIcon className="benefit_icon" />
+								<Typography className="benefit_text">
+									Enhanced flexibility and range of motion
+								</Typography>
+							</Box>
+							<Box className="benefits-list_wrapper">
+								<CheckCircleOutlineIcon className="benefit_icon" />
+								<Typography className="benefit_text">Accelerated recovery from injuries</Typography>
+							</Box>
+							<Box className="benefits-list_wrapper">
+								<CheckCircleOutlineIcon className="benefit_icon" />
+								<Typography className="benefit_text">
+									Relief from chronic pain and discomfort
+								</Typography>
+							</Box>
+							<Box className="benefits-list_wrapper">
+								<CheckCircleOutlineIcon className="benefit_icon" />
+								<Typography className="benefit_text">
+									Increased relaxation and stress reduction
+								</Typography>
+							</Box>
+						</Box>
+					</Grid>
 
-				<div className={`${classes.service} flex1x4`}>
-					<div className={classes.service__header}>
-						<img
-							src={kt}
-							className={classes.service__image__left}
-							alt="Pink and blue coloured tape applied to a patient's shoulder for postural awareness."
-						/>
-					</div>
-				</div>
-				<div className="flex1x4">
-					<h3 className={classes.service__desc}>Strapping & Taping</h3>
-					<p>
-						Strapping and taping of joints and soft tissues is a common treatment modality amongst
-						physiotherapists. It can be helpful in the treatment of sprains and strains, ligament
-						injuries as well as correction of joint alignment (or biomechanics). Correct application
-						of tape can help reduce swelling, aid recovery of injured areas and offload painful
-						tissues
-					</p>
-				</div>
-				<div className="flex1x4">
-					<h3 className={classes.service__desc}>Benefits Include:</h3>
-					<div className={classes.ul_container}>
-						<ul>
-							<li>
-								<i className={`${classes.bullet} fa-regular fa-circle-check`}></i>
-								Compression
-							</li>
-							<li>
-								<i className={`${classes.bullet} fa-regular fa-circle-check`}></i>
-								Restriction of movement
-							</li>
-							<li>
-								<i className={`${classes.bullet} fa-regular fa-circle-check`}></i>
-								Correction of biomechanics
-							</li>
-						</ul>
-					</div>
-				</div>
-				<div className={`${classes.service__price} flex1x4`}>
-					<h3 className={classes.service__desc}>Session Price:</h3>
-					<div className={classes.price}>
-						<i className="fa-light fa-sterling-sign"></i>10
-					</div>
-				</div>
-			</div>
+					{/* Pricing */}
+					<Grid
+						item
+						md={3}
+						xs={12}
+					>
+						<Box className="service-grid-pricing">
+							<Box className="service-wrapper">
+								<Box className="service-pricing_container">
+									<Typography
+										variant="body2"
+										className="pricing-header"
+									>
+										30 Minutes
+									</Typography>
+									<Box className="pricing-circle">
+										<Typography
+											variant="body2"
+											className="pricing-text"
+										>
+											£30
+										</Typography>
+									</Box>
+								</Box>
+								<Box className="service-pricing_container">
+									<Typography
+										variant="body2"
+										className="pricing-header"
+									>
+										60 Minutes
+									</Typography>
+									<Box className="pricing-circle">
+										<Typography
+											variant="body2"
+											className="pricing-text"
+										>
+											£45
+										</Typography>
+									</Box>
+								</Box>
+								<Box className="service-pricing_container">
+									<Typography
+										variant="body2"
+										className="pricing-header"
+									>
+										90 Minutes
+									</Typography>
+									<Box className="pricing-circle">
+										<Typography
+											variant="body2"
+											className="pricing-text"
+										>
+											£65
+										</Typography>
+									</Box>
+								</Box>
+							</Box>
+						</Box>
+					</Grid>
+					{/* Image */}
+					<Grid
+						item
+						md={3}
+						xs={12}
+						className="service-grid_image-wrapper"
+					>
+						<Box
+							component={'img'}
+							src={massage}
+							className="service__image__left"
+							alt="A patient receiving soft tissue therapy treatment."
+						></Box>
+					</Grid>
+
+					{/* Description */}
+					<Grid
+						item
+						md={3}
+						xs={12}
+					>
+						<Box className="service-grid-description">
+							<Typography
+								variant="body1"
+								className="description-heading"
+							>
+								Oncology Massage
+							</Typography>
+
+							<Typography
+								variant="body1"
+								className="description-body"
+							>
+								Oncology massage offers compassionate and specialised care tailored to individuals
+								navigating the challenges of cancer diagnosis and treatment. Delivered by trained
+								therapists with a deep understanding of the unique needs and considerations of
+								oncology patients, this gentle and soothing therapy aims to alleviate physical
+								discomfort, reduce anxiety, and promote relaxation.
+							</Typography>
+						</Box>
+					</Grid>
+
+					{/* Benefits */}
+					<Grid
+						item
+						md={3}
+						xs={12}
+					>
+						<Box className="service-grid-benefits_item">
+							<Typography
+								variant="body1"
+								className="benefits-heading"
+							>
+								Benefits Include:
+							</Typography>
+
+							<Box className="benefits-list_wrapper">
+								<CheckCircleOutlineIcon className="benefit_icon" />
+								<Typography className="benefit_text">
+									Better ability to tolerate cancer treatment side effects
+								</Typography>
+							</Box>
+							<Box className="benefits-list_wrapper">
+								<CheckCircleOutlineIcon className="benefit_icon" />
+								<Typography className="benefit_text">Better sleep</Typography>
+							</Box>
+							<Box className="benefits-list_wrapper">
+								<CheckCircleOutlineIcon className="benefit_icon" />
+								<Typography className="benefit_text">Fewer headaches</Typography>
+							</Box>
+							<Box className="benefits-list_wrapper">
+								<CheckCircleOutlineIcon className="benefit_icon" />
+								<Typography className="benefit_text">
+									Less peripheral neuropathy (numbness)
+								</Typography>
+							</Box>
+							<Box className="benefits-list_wrapper">
+								<CheckCircleOutlineIcon className="benefit_icon" />
+								<Typography className="benefit_text">Less chemotherapy-related nausea</Typography>
+							</Box>
+							<Box className="benefits-list_wrapper">
+								<CheckCircleOutlineIcon className="benefit_icon" />
+								<Typography className="benefit_text">Less chronic pain</Typography>
+							</Box>
+							<Box className="benefits-list_wrapper">
+								<CheckCircleOutlineIcon className="benefit_icon" />
+								<Typography className="benefit_text">Less stress and anxiety</Typography>
+							</Box>
+						</Box>
+					</Grid>
+
+					{/* Pricing */}
+					<Grid
+						item
+						md={3}
+						xs={12}
+					>
+						<Box className="service-grid-pricing">
+							<Box className="service-wrapper">
+								<Box className="service-pricing_container">
+									<Typography
+										variant="body2"
+										className="pricing-header"
+									>
+										Treatment Times Vary
+									</Typography>
+									<Box className="pricing-circle">
+										<Typography
+											variant="body2"
+											className="pricing-text"
+										>
+											£50
+										</Typography>
+									</Box>
+								</Box>
+							</Box>
+						</Box>
+					</Grid>
+
+					{/* Image */}
+					<Grid
+						item
+						md={3}
+						xs={12}
+						className="service-grid_image-wrapper"
+					>
+						<Box
+							component={'img'}
+							src={acupuncture}
+							className="service__image__left"
+							alt="A therapist placing acupuncture needles into a patient's back."
+						></Box>
+					</Grid>
+
+					{/* Description */}
+					<Grid
+						item
+						md={3}
+						xs={12}
+					>
+						<Box className="service-grid-description">
+							<Typography
+								variant="body1"
+								className="description-heading"
+							>
+								Dry Needling
+							</Typography>
+
+							<Typography
+								variant="body1"
+								className="description-body"
+							>
+								Acupuncture is used to complement physiotherapy treatment in assisting with pain
+								relief. It also aides in the restoration of joint mobility and function. Additional
+								benefits include headache management and nerve pain relief.
+							</Typography>
+						</Box>
+					</Grid>
+
+					{/* Benefits */}
+					<Grid
+						item
+						md={3}
+						xs={12}
+					>
+						<Box className="service-grid-benefits_item">
+							<Typography
+								variant="body1"
+								className="benefits-heading"
+							>
+								Benefits Include:
+							</Typography>
+
+							<Box className="benefits-list_wrapper">
+								<CheckCircleOutlineIcon className="benefit_icon" />
+								<Typography className="benefit_text">Pain Relief</Typography>
+							</Box>
+							<Box className="benefits-list_wrapper">
+								<CheckCircleOutlineIcon className="benefit_icon" />
+								<Typography className="benefit_text">Relaxation of muscle tissue</Typography>
+							</Box>
+							<Box className="benefits-list_wrapper">
+								<CheckCircleOutlineIcon className="benefit_icon" />
+								<Typography className="benefit_text">Stimulation of muscle tissue</Typography>
+							</Box>
+							<Box className="benefits-list_wrapper">
+								<CheckCircleOutlineIcon className="benefit_icon" />
+								<Typography className="benefit_text">Increases local circulation</Typography>
+							</Box>
+						</Box>
+					</Grid>
+
+					{/* Pricing */}
+					<Grid
+						item
+						md={3}
+						xs={12}
+					>
+						<Box className="service-grid-pricing">
+							<Typography
+								variant="body1"
+								className="pricing-body"
+							>
+								Can be added onto another service such as an assessment or sports massage. Your{' '}
+								<span className="pricing-bold">first dry needling treatment is FREE</span>. If you
+								find it successful in treating your pain then subsequent dry needling treatments
+								will be charge at an <span className="pricing-bold">additional fee of £5</span> in
+								conjunction with another service.
+							</Typography>
+							<Box className="service-wrapper">
+								<Box className="service-pricing_container">
+									<Box className="pricing-circle">
+										<Typography
+											variant="body2"
+											className="pricing-text"
+										>
+											Free
+										</Typography>
+									</Box>
+								</Box>
+								<Box className="service-pricing_container">
+									<Box className="pricing-circle">
+										<Typography
+											variant="body2"
+											className="pricing-text"
+										>
+											£5
+										</Typography>
+									</Box>
+								</Box>
+							</Box>
+						</Box>
+					</Grid>
+				</Grid>
+			</Box>
 		</>
 	);
 };
