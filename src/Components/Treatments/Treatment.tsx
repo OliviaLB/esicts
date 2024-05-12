@@ -2,7 +2,7 @@ import { Box, Grid, Typography } from '@mui/material';
 import acupuncture from '../../Assets/Images/Acupuncture.jpeg';
 import back from '../../Assets/Images/Back.jpeg';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
-import cupping from '../../Assets/Images/Cupping.jpeg';
+import brace from '../../Assets/Images/Brace2.jpeg';
 import kt from '../../Assets/Images/KT2.jpeg';
 import massage from '../../Assets/Images/Massage.jpeg';
 import stones from '../../Assets/Images/Stones.jpeg';
@@ -20,7 +20,9 @@ const Treatment = () => {
 					{/* Image */}
 					<Grid
 						item
-						md={3}
+						lg={3}
+						md={12}
+						sm={12}
 						xs={12}
 						className="service-grid_image-wrapper"
 					>
@@ -35,7 +37,9 @@ const Treatment = () => {
 					{/* Description */}
 					<Grid
 						item
-						md={3}
+						lg={3}
+						md={12}
+						sm={12}
 						xs={12}
 					>
 						<Box className="service-grid-description">
@@ -63,7 +67,9 @@ const Treatment = () => {
 					{/* Benefits */}
 					<Grid
 						item
-						md={3}
+						lg={3}
+						md={12}
+						sm={12}
 						xs={12}
 					>
 						<Box className="service-grid-benefits_item">
@@ -96,7 +102,9 @@ const Treatment = () => {
 					{/* Pricing */}
 					<Grid
 						item
-						md={3}
+						lg={3}
+						md={12}
+						sm={12}
 						xs={12}
 					>
 						<Box className="service-grid-pricing">
@@ -139,7 +147,9 @@ const Treatment = () => {
 					{/* Image */}
 					<Grid
 						item
-						md={3}
+						lg={3}
+						md={12}
+						sm={12}
 						xs={12}
 						className="service-grid_image-wrapper"
 					>
@@ -154,7 +164,9 @@ const Treatment = () => {
 					{/* Description */}
 					<Grid
 						item
-						md={3}
+						lg={3}
+						md={12}
+						sm={12}
 						xs={12}
 					>
 						<Box className="service-grid-description">
@@ -188,7 +200,9 @@ const Treatment = () => {
 					{/* Benefits */}
 					<Grid
 						item
-						md={3}
+						lg={3}
+						md={12}
+						sm={12}
 						xs={12}
 					>
 						<Box className="service-grid-benefits_item">
@@ -239,7 +253,9 @@ const Treatment = () => {
 					{/* Pricing */}
 					<Grid
 						item
-						md={3}
+						lg={3}
+						md={12}
+						sm={12}
 						xs={12}
 					>
 						<Box className="service-grid-pricing">
@@ -298,7 +314,9 @@ const Treatment = () => {
 					{/* Image */}
 					<Grid
 						item
-						md={3}
+						lg={3}
+						md={12}
+						sm={12}
 						xs={12}
 						className="service-grid_image-wrapper"
 					>
@@ -313,7 +331,9 @@ const Treatment = () => {
 					{/* Description */}
 					<Grid
 						item
-						md={3}
+						lg={3}
+						md={12}
+						sm={12}
 						xs={12}
 					>
 						<Box className="service-grid-description">
@@ -340,7 +360,9 @@ const Treatment = () => {
 					{/* Benefits */}
 					<Grid
 						item
-						md={3}
+						lg={3}
+						md={12}
+						sm={12}
 						xs={12}
 					>
 						<Box className="service-grid-benefits_item">
@@ -389,7 +411,9 @@ const Treatment = () => {
 					{/* Pricing */}
 					<Grid
 						item
-						md={3}
+						lg={3}
+						md={12}
+						sm={12}
 						xs={12}
 					>
 						<Box className="service-grid-pricing">
@@ -417,7 +441,119 @@ const Treatment = () => {
 					{/* Image */}
 					<Grid
 						item
-						md={3}
+						lg={3}
+						md={12}
+						sm={12}
+						xs={12}
+						className="service-grid_image-wrapper"
+					>
+						<Box
+							component={'img'}
+							src={kt}
+							className="service__image__left"
+							alt="Pink and blue coloured tape applied to a patient's shoulder for postural awareness."
+						></Box>
+					</Grid>
+
+					{/* Description */}
+					<Grid
+						item
+						lg={3}
+						md={12}
+						sm={12}
+						xs={12}
+					>
+						<Box className="service-grid-description">
+							<Typography
+								variant="body1"
+								className="description-heading"
+							>
+								Strapping & Taping
+							</Typography>
+
+							<Typography
+								variant="body1"
+								className="description-body"
+							>
+								Strapping and taping of joints and soft tissues is a common treatment modality
+								amongst physiotherapists. It can be helpful in the treatment of sprains and strains,
+								ligament injuries as well as correction of joint alignment (or biomechanics).
+								Correct application of tape can help reduce swelling, aid recovery of injured areas
+								and offload painful tissues
+							</Typography>
+						</Box>
+					</Grid>
+
+					{/* Benefits */}
+					<Grid
+						item
+						lg={3}
+						md={12}
+						sm={12}
+						xs={12}
+					>
+						<Box className="service-grid-benefits_item">
+							<Typography
+								variant="body1"
+								className="benefits-heading"
+							>
+								Benefits Include:
+							</Typography>
+
+							<Box className="benefits-list_wrapper">
+								<CheckCircleOutlineIcon className="benefit_icon" />
+								<Typography className="benefit_text">Compression</Typography>
+							</Box>
+							<Box className="benefits-list_wrapper">
+								<CheckCircleOutlineIcon className="benefit_icon" />
+								<Typography className="benefit_text">Restriction of movement</Typography>
+							</Box>
+							<Box className="benefits-list_wrapper">
+								<CheckCircleOutlineIcon className="benefit_icon" />
+								<Typography className="benefit_text">Correction of biomechanics</Typography>
+							</Box>
+							<Box className="benefits-list_wrapper">
+								<CheckCircleOutlineIcon className="benefit_icon" />
+								<Typography className="benefit_text">
+									Stimulate Bruise and Contusion Recovery
+								</Typography>
+							</Box>
+							<Box className="benefits-list_wrapper">
+								<CheckCircleOutlineIcon className="benefit_icon" />
+								<Typography className="benefit_text">Support Injured Muscles</Typography>
+							</Box>
+						</Box>
+					</Grid>
+
+					{/* Pricing */}
+					<Grid
+						item
+						lg={3}
+						md={12}
+						sm={12}
+						xs={12}
+					>
+						<Box className="service-grid-pricing">
+							<Box className="service-wrapper">
+								<Box className="service-pricing_container">
+									<Box className="pricing-circle">
+										<Typography
+											variant="body2"
+											className="pricing-text"
+										>
+											£10
+										</Typography>
+									</Box>
+								</Box>
+							</Box>
+						</Box>
+					</Grid>
+					{/* Image */}
+					<Grid
+						item
+						lg={3}
+						md={12}
+						sm={12}
 						xs={12}
 						className="service-grid_image-wrapper"
 					>
@@ -432,7 +568,9 @@ const Treatment = () => {
 					{/* Description */}
 					<Grid
 						item
-						md={3}
+						lg={3}
+						md={12}
+						sm={12}
 						xs={12}
 					>
 						<Box className="service-grid-description">
@@ -457,7 +595,9 @@ const Treatment = () => {
 					{/* Benefits */}
 					<Grid
 						item
-						md={3}
+						lg={3}
+						md={12}
+						sm={12}
 						xs={12}
 					>
 						<Box className="service-grid-benefits_item">
@@ -490,7 +630,9 @@ const Treatment = () => {
 					{/* Pricing */}
 					<Grid
 						item
-						md={3}
+						lg={3}
+						md={12}
+						sm={12}
 						xs={12}
 					>
 						<Box className="service-grid-pricing">
@@ -515,6 +657,121 @@ const Treatment = () => {
 										</Typography>
 									</Box>
 								</Box>
+								<Box className="service-pricing_container">
+									<Box className="pricing-circle">
+										<Typography
+											variant="body2"
+											className="pricing-text"
+										>
+											£5
+										</Typography>
+									</Box>
+								</Box>
+							</Box>
+						</Box>
+					</Grid>
+					{/* Image */}
+					<Grid
+						item
+						lg={3}
+						md={12}
+						sm={12}
+						xs={12}
+						className="service-grid_image-wrapper"
+					>
+						<Box
+							component={'img'}
+							src={brace}
+							className="service__image__left"
+							alt="Patient performing a single leg hold."
+						></Box>
+					</Grid>
+
+					{/* Description */}
+					<Grid
+						item
+						lg={3}
+						md={12}
+						sm={12}
+						xs={12}
+					>
+						<Box className="service-grid-description">
+							<Typography
+								variant="body1"
+								className="description-heading"
+							>
+								Additional Rehab Program
+							</Typography>
+
+							<Typography
+								variant="body1"
+								className="description-body"
+							>
+								Progress your rehabilitation with an additional rehab program. Tailored to
+								individual needs, our program addresses a spectrum of musculoskeletal challenges,
+								from sprains to biomechanical imbalances, in alignment with personalised recovery
+								objectives. Through expert application, we aim to expedite healing processes,
+								alleviate discomfort, and empower clients on their journey toward improved function
+								and holistic well-being.
+							</Typography>
+						</Box>
+					</Grid>
+
+					{/* Benefits */}
+					<Grid
+						item
+						lg={3}
+						md={12}
+						sm={12}
+						xs={12}
+					>
+						<Box className="service-grid-benefits_item">
+							<Typography
+								variant="body1"
+								className="benefits-heading"
+							>
+								Benefits Include:
+							</Typography>
+
+							<Box className="benefits-list_wrapper">
+								<CheckCircleOutlineIcon className="benefit_icon" />
+								<Typography className="benefit_text">
+									Improved physical function and mobility
+								</Typography>
+							</Box>
+							<Box className="benefits-list_wrapper">
+								<CheckCircleOutlineIcon className="benefit_icon" />
+								<Typography className="benefit_text">Reduced pain and discomfort</Typography>
+							</Box>
+							<Box className="benefits-list_wrapper">
+								<CheckCircleOutlineIcon className="benefit_icon" />
+								<Typography className="benefit_text">Enhanced strength and endurance</Typography>
+							</Box>
+							<Box className="benefits-list_wrapper">
+								<CheckCircleOutlineIcon className="benefit_icon" />
+								<Typography className="benefit_text">Faster recovery from injuries</Typography>
+							</Box>
+							<Box className="benefits-list_wrapper">
+								<CheckCircleOutlineIcon className="benefit_icon" />
+								<Typography className="benefit_text">Better coordination and balance</Typography>
+							</Box>
+							<Box className="benefits-list_wrapper">
+								<CheckCircleOutlineIcon className="benefit_icon" />
+								<Typography className="benefit_text">Prevention of future injuries</Typography>
+							</Box>
+						</Box>
+					</Grid>
+
+					{/* Pricing */}
+					<Grid
+						item
+						lg={3}
+						md={12}
+						sm={12}
+						xs={12}
+					>
+						<Box className="service-grid-pricing">
+							<Box className="service-wrapper">
 								<Box className="service-pricing_container">
 									<Box className="pricing-circle">
 										<Typography

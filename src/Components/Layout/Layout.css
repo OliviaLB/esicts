@@ -6,8 +6,15 @@
 	overflow-y: auto;
 }
 
+.main-page_wraper {
+	min-height: 500px;
+}
+
 .page_container {
 	padding: 0;
 	margin: 0;
 	width: 100%;
+	min-height: 500px;
+	border: 1px solid red;
+	height: 100vh;
 }

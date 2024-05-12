@@ -13,8 +13,11 @@ const CommonLayout: React.FC<{ component: React.ReactNode }> = ({ component }) =
 
 			<Box className="page_container">
 				<Banner />
+				<Box className="main-page_wraper">
+
 				{component}
 
+				</Box>
 				<Footer />
 			</Box>
 		</Box>

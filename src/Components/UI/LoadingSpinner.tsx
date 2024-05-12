@@ -1,7 +1,12 @@
-import classes from './LoadingSpinner.module.css';
+import CircularProgress from '@mui/material/CircularProgress';
 
 const LoadingSpinner = () => {
-  return <div className={classes.spinner}></div>;
-}
+	return (
+		<CircularProgress
+			size={'100px'}
+			color="secondary"
+		/>
+	);
+};
 
 export default LoadingSpinner;

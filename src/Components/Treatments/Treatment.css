@@ -2,9 +2,10 @@
 	margin: 2rem 0;
 
 	.css-mhc70k-MuiGrid-root > .MuiGrid-item {
-		padding-top: 0;
+		padding-top: 1rem;
 		padding-bottom: 1rem;
 		display: flex;
+		box-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
 	}
 
 	.service-grid_image-wrapper {
@@ -12,6 +13,7 @@
 		justify-content: center;
 		align-items: center;
 		flex-grow: 1;
+
 		.service__image__left {
 			height: 15rem;
 			clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
@@ -90,7 +92,6 @@
 				display: flex;
 				flex-direction: column;
 				align-items: center;
-				justify-content: center;
 
 				.pricing-header {
 					font-weight: 600;
@@ -116,6 +117,17 @@
 					}
 				}
 			}
+		}
+	}
+
+	@media screen and (max-width: 1199px) {
+		.css-mhc70k-MuiGrid-root > .MuiGrid-item {
+			box-shadow: none;
+		}
+
+		.service-grid-pricing {
+			padding-bottom: 1rem;
+			box-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
 		}
 	}
 }
